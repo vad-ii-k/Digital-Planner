@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@page {
+    size: 18.83in 11.77in;
+    margin: 0;
+    padding: 0;
+}

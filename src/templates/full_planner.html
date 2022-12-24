@@ -1,0 +1,8 @@
+{% include 'header.html' %}
+    <div>
+        {% for page in pages %}
+            {{ page | safe }}
+        {% endfor %}
+    </div>
+</body>
+</html>
