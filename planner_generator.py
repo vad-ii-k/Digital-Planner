@@ -24,16 +24,12 @@ class PlannerBuilder:
         annual_template = self.j2_env.get_template('annual_overview.html')
         # locale.setlocale(locale.LC_ALL, 'ru_RU.UTF-8')
         page = await annual_template.render_async(year=self.year, calendar=calendar, date_func=date, id=self.year)
-        self.pages.update({str(self.year): page})
+        self.pages.update({'year': page})
 
     async def build_monthly_pages(self):
         monthly_template = self.j2_env.get_template('monthly.html')
-        for month_num in range(1, 13):
-            page_id = f'{self.year}-{month_num:02d}'
-            page = await monthly_template.render_async(
-                year=self.year, month_num=month_num, calendar=calendar, id=page_id
-            )
-            self.pages.update({page_id: page})
+        pages = await monthly_template.render_async(year=self.year, calendar=calendar)
+        self.pages.update({'months': pages})
 
 
 async def generate_html(planner_html: str, out_file: str):

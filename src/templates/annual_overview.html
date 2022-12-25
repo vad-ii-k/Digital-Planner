@@ -5,7 +5,7 @@
         <p class="text-indigo-600">Planner</p>
     </div>
     <div class="grid grid-cols-4 gap-4 place-content-stretch font-medium h-2/3 p-2">
-        {% for month_name in calendar.month_name[1:] %}
+        {% for month_name in calendar.month_name[1:] -%}
             {% set month_num = loop.index %}
             <div class="p-4 rounded-xl shadow-inner bg-zinc-200">
                 <div class="flex justify-between mb-2 text-xl">
@@ -14,27 +14,25 @@
                 </div>
                 <div class="grid grid-cols-8 gap-4 text-slate-400 text-sm mb-1">
                     <div></div>
-                    {% for abbr in calendar.day_abbr %}
+                    {% for abbr in calendar.day_abbr -%}
                         <div>{{ abbr }}</div>
-                    {% endfor %}
+                    {% endfor -%}
                 </div>
                 <div class="grid grid-cols-8 gap-4 text-center">
-                    {% for week in calendar.Calendar().monthdayscalendar(year, month_num) %}
+                    {% for week in calendar.Calendar().monthdayscalendar(year, month_num) -%}
                         {% set week_num = date_func(year, month_num, (week | max)).isocalendar().week %}
                         <div class="{{ "text-sky-300" if loop.first and week_num == 52 else "text-sky-500" }}">
                             {{ week_num }}
                         </div>
-                        {% for day in week %}
+                        {% for day in week -%}
                             <div>
-                                {% if day != 0 %}
-                                    {{ day }}
-                                {% endif %}
+                                {% if day != 0 %}{{ day }}{% endif %}
                             </div>
-                        {% endfor %}
-                    {% endfor %}
+                        {% endfor -%}
+                    {% endfor -%}
                 </div>
             </div>
-        {% endfor %}
+        {% endfor -%}
     </div>
     <div class="flex justify-center items-stretch gap-6">
         <img src="../src/icons/calendar.svg" width="40"/>

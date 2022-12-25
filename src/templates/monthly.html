@@ -1,46 +1,50 @@
-{% include 'page_header.html' %}
-<div class="h-full grid grid-cols-1 gap-4 content-around p-4">
-    <div class="flex justify-between text-2xl">
-        <div class="flex gap-2 font-semibold pl-3">
-              <p>{{ year }}</p>
-              ➡️
-              <p class="text-indigo-600">{{ calendar.month_name[month_num] }}</p>
-        </div>
-        <div class="flex justify-between w-14">
-            <div class="absolute right-14">
-                {% if month_num != 1 %}
-                    <a href="#{{ year }}-{{ '%02d' % (month_num - 1) }}">⬅️</a>
-                {% endif %}
+{% for month_num in range(1, 13) -%}
+    {% set id =  year ~ '-' ~ ('%02d' % month_num) %}
+    {% include 'page_header.html' %}
+    <div class="h-full grid grid-cols-1 gap-4 content-around p-4">
+        <div class="flex justify-between text-2xl">
+            <div class="flex gap-2 font-semibold pl-3">
+                  <p>{{ year }}</p>
+                  ➡️
+                  <p class="text-indigo-600">{{ calendar.month_name[month_num] }}</p>
             </div>
-            <div>
-                {% if month_num != 12 %}
-                    <a href="#{{ year }}-{{ '%02d' % (month_num + 1) }}">➡️</a>
-                {% endif %}
-            </div>
-        </div>
-    </div>
-    <div class="content-center">
-        {% for week in calendar.Calendar().monthdatescalendar(year, month_num) %}
-            {% set week_num = week[0].isocalendar().week %}
-            <div class="flex text-xl">
-                <div class="pl-3 {{ "text-slate-300" if loop.first and week_num == 52 }}">Week {{ week_num }}</div>
-                <a class="pl-3" href="#{{ year }}-{{ '%02d' % month_num }}-{{ 'W%02d' % week_num }}">↗️</a>
-            </div>
-            <div class="grid grid-cols-7 items-stretch gap-4 font-medium p-2">
-            {% for date in week %}
-                <div class="py-12 p-4 rounded-xl shadow-inner bg-zinc-200">
-                    <p class="{{ "text-slate-500" if date.month != month_num }}">{{ date.day }}</p>
+            <div class="flex justify-between w-14">
+                <div class="absolute right-14">
+                    {% if month_num != 1 %}
+                        <a href="#{{ year }}-{{ '%02d' % (month_num - 1) }}">⬅️</a>
+                    {% endif %}
                 </div>
-            {% endfor %}
+                <div>
+                    {% if month_num != 12 %}
+                        <a href="#{{ year }}-{{ '%02d' % (month_num + 1) }}">➡️</a>
+                    {% endif %}
+                </div>
             </div>
-        {% endfor %}
+        </div>
+        <div class="content-center">
+            {% for week in calendar.Calendar().monthdatescalendar(year, month_num) -%}
+                {% set week_num = week[0].isocalendar().week %}
+                <div class="flex text-xl">
+                    <div class="pl-3 {{ "text-slate-300" if loop.first and week_num == 52 }}">Week {{ week_num }}</div>
+                    <a class="pl-3"
+                       href="#{{ year - 1 if loop.first and week_num == 52 else year }}-{{ 'W%02d' % week_num }}">↗️</a>
+                </div>
+                <div class="grid grid-cols-7 items-stretch gap-4 font-medium p-2">
+                {% for date in week -%}
+                    <div class="py-12 p-4 rounded-xl shadow-inner bg-zinc-200">
+                        <p class="{{ "text-slate-500" if date.month != month_num }}">{{ date.day }}</p>
+                    </div>
+                {% endfor -%}
+                </div>
+            {% endfor -%}
+        </div>
+        <div class="absolute inset-x-0 bottom-2 flex justify-center items-stretch gap-6">
+            <img src="../src/icons/calendar.svg" width="40"/>
+            <div class="text-2xl">🔘</div>
+            <div class="text-2xl">🔘</div>
+            <div class="text-2xl">🔘</div>
+            <div class="text-2xl">🔘</div>
+        </div>
     </div>
-    <div class="absolute inset-x-0 bottom-2 flex justify-center items-stretch gap-6">
-        <img src="../src/icons/calendar.svg" width="40"/>
-        <div class="text-2xl">🔘</div>
-        <div class="text-2xl">🔘</div>
-        <div class="text-2xl">🔘</div>
-        <div class="text-2xl">🔘</div>
-    </div>
-</div>
-{% include 'page_footer.html' %}
+    {% include 'page_footer.html' %}
+{% endfor -%}
