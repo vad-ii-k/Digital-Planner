@@ -30,6 +30,11 @@ class PlannerBuilder:
         pages = await monthly_template.render_async(year=self.year, calendar=calendar)
         self.pages.update({'months': pages})
 
+    async def build_weekly_pages(self):
+        weekly_template = self.j2_env.get_template('weekly.html')
+        pages = await weekly_template.render_async(year=self.year, calendar=calendar)
+        self.pages.update({'weeks': pages})
+
 
 async def generate_html(planner_html: str, out_file: str):
     with open(out_file, 'w') as file:
@@ -50,6 +55,7 @@ async def main():
     builder = PlannerBuilder(year=2023, templates_path='src/templates')
     await builder.build_annual_pages()
     await builder.build_monthly_pages()
+    await builder.build_weekly_pages()
 
     planner = await builder.build_planner()
 
