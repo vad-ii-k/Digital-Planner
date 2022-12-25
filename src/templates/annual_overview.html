@@ -19,14 +19,13 @@
                     {% endfor -%}
                 </div>
                 <div class="grid grid-cols-8 gap-4 text-center">
-                    {% for week in calendar.Calendar().monthdayscalendar(year, month_num) -%}
-                        {% set week_num = date_func(year, month_num, (week | max)).isocalendar().week %}
-                        <div class="{{ "text-sky-300" if loop.first and week_num == 52 else "text-sky-500" }}">
-                            {{ week_num }}
+                    {% for week in calendar.Calendar().monthdatescalendar(year, month_num) -%}
+                        <div class="{{ "text-sky-300" if week[0].year != week[-1].year else "text-sky-500" }}">
+                            {{ week[0].isocalendar().week }}
                         </div>
-                        {% for day in week -%}
+                        {% for date in week -%}
                             <div>
-                                {% if day != 0 %}{{ day }}{% endif %}
+                                {% if date.month == month_num %}{{ date.day }}{% endif %}
                             </div>
                         {% endfor -%}
                     {% endfor -%}

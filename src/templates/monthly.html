@@ -1,5 +1,5 @@
 {% for month_num in range(1, 13) -%}
-    {% set id =  year ~ '-' ~ ('%02d' % month_num) %}
+    {% set id = year ~ '-' ~ ('%02d' % month_num) %}
     {% include 'page_header.html' %}
     <div class="h-full grid grid-cols-1 gap-4 content-around p-4">
         <div class="flex justify-between text-2xl">
@@ -25,9 +25,9 @@
             {% for week in calendar.Calendar().monthdatescalendar(year, month_num) -%}
                 {% set week_num = week[0].isocalendar().week %}
                 <div class="flex text-xl">
-                    <div class="pl-3 {{ "text-slate-300" if loop.first and week_num == 52 }}">Week {{ week_num }}</div>
+                    <div class="pl-3 {{ "text-slate-300" if week[0].year != week[-1].year }}">Week {{ week_num }}</div>
                     <a class="pl-3"
-                       href="#{{ year - 1 if loop.first and week_num == 52 else year }}-{{ 'W%02d' % week_num }}">↗️</a>
+                       href="#{{ week[0].year if week[-1].year != (year + 1) else week[-1].year }}-{{ 'W%02d' % week_num }}">↗️</a>
                 </div>
                 <div class="grid grid-cols-7 items-stretch gap-4 font-medium p-2">
                 {% for date in week -%}
