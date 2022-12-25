@@ -26,6 +26,15 @@ class PlannerBuilder:
         page = await annual_template.render_async(year=self.year, calendar=calendar, date_func=date, id=self.year)
         self.pages.update({str(self.year): page})
 
+    async def build_monthly_pages(self):
+        monthly_template = self.j2_env.get_template('monthly.html')
+        for month_num in range(1, 13):
+            page_id = f'{self.year}-{month_num:02d}'
+            page = await monthly_template.render_async(
+                year=self.year, month_num=month_num, calendar=calendar, id=page_id
+            )
+            self.pages.update({page_id: page})
+
 
 async def generate_html(planner_html: str, out_file: str):
     with open(out_file, 'w') as file:
@@ -45,6 +54,7 @@ async def generate_pdf(html_file_path: str, css_file_path: str, out_file_path: s
 async def main():
     builder = PlannerBuilder(year=2023, templates_path='src/templates')
     await builder.build_annual_pages()
+    await builder.build_monthly_pages()
 
     planner = await builder.build_planner()
 
