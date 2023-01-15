@@ -19,21 +19,12 @@ class PlannerBuilder:
     async def build_planner(self) -> str:
         return await self.j2_env.get_template('full_planner.html').render_async(pages=self.pages.values())
 
-    async def build_annual_pages(self):
-        annual_template = self.j2_env.get_template('annual_overview.html')
+    async def add_pages(self):
         # locale.setlocale(locale.LC_ALL, 'ru_RU.UTF-8')
-        page = await annual_template.render_async(year=self.year, calendar=calendar, id=self.year)
-        self.pages.update({'year': page})
-
-    async def build_monthly_pages(self):
-        monthly_template = self.j2_env.get_template('monthly.html')
-        pages = await monthly_template.render_async(year=self.year, calendar=calendar)
-        self.pages.update({'months': pages})
-
-    async def build_weekly_pages(self):
-        weekly_template = self.j2_env.get_template('weekly.html')
-        pages = await weekly_template.render_async(year=self.year, calendar=calendar)
-        self.pages.update({'weeks': pages})
+        for template_name in ['annual_overview', 'monthly', 'weekly', 'daily']:
+            template = self.j2_env.get_template(f'{template_name}.html')
+            pages = await template.render_async(year=self.year, calendar=calendar)
+            self.pages.update({template_name: pages})
 
 
 async def generate_html(planner_html: str, out_file: str):
@@ -53,9 +44,7 @@ async def generate_pdf(html_file_path: str, css_file_path: str, out_file_path: s
 
 async def main():
     builder = PlannerBuilder(year=2023, templates_path='src/templates')
-    await builder.build_annual_pages()
-    await builder.build_monthly_pages()
-    await builder.build_weekly_pages()
+    await builder.add_pages()
 
     planner = await builder.build_planner()
 
