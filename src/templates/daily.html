@@ -1,0 +1,62 @@
+{% for month_num in range(1, 13) -%}
+    {% set months_loop = loop %}
+    {% for week in calendar.Calendar().monthdatescalendar(year, month_num) -%}
+        {% for date in week -%}
+            {% set id = ('%02d-%02d-%d' % (date.day, date.month, date.year)) %}
+            {% include 'page_header.html' %}
+            <div class="h-full grid grid-cols-1 gap-4 content-around p-4">
+                <div class="flex justify-between text-2xl">
+                    <div class="flex gap-2 font-semibold pl-3">
+                        <p>{{ week[0].year }}</p>
+                        ➡️
+                        <p>{{ calendar.month_name[week[0].month] }}</p>
+                        ➡️
+                        <p>{{ week[0].day ~ ' - ' ~ week[-1].day }}</p>
+                        ➡️
+                        <p class="text-indigo-600">{{ date.day ~ " " ~ calendar.day_name[loop.index0] }}</p>
+                    </div>
+                </div>
+                <div class="grid grid-cols-2 gap-4 text-xl font-semibold">
+                    <div class="p-4 rounded-xl shadow-inner bg-zinc-200">
+                        Daily plan
+                        <div class="grid divide-y divide-slate-300 divide-dashed">
+                            {% for hour in range(7, 22) -%}
+                                <div class="p-4">{{ hour }}:00</div>
+                            {% endfor %}
+                            <div></div>
+                        </div>
+                    </div>
+                    <div class="grid gap-y-4">
+                        <div class="h-[8rem] p-4 rounded-xl shadow-inner bg-zinc-200">Daily main focus</div>
+                        <div class="h-[27rem] p-4 rounded-xl shadow-inner bg-zinc-200">
+                            Tasks
+                            <div class="grid grid-cols-2 gap-4">
+                                <div class="h-5/6 grid divide-y divide-slate-300 divide-dashed">
+                                    {% for _ in range(7) -%}
+                                        <div class="p-3">⚪️</div>
+                                    {% endfor %}
+                                    <div></div>
+                                </div>
+                                <div class="h-5/6 grid divide-y divide-slate-300 divide-dashed">
+                                    {% for _ in range(7) -%}
+                                        <div class="p-3">⚪️</div>
+                                    {% endfor %}
+                                    <div></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="h-[24rem] p-4 rounded-xl shadow-inner bg-zinc-200">Notes</div>
+                    </div>
+                </div>
+                <div class="absolute inset-x-0 bottom-2 flex justify-center items-stretch gap-6">
+                    <img src="../src/icons/calendar.svg" width="40"/>
+                    <div class="text-2xl">🔘</div>
+                    <div class="text-2xl">🔘</div>
+                    <div class="text-2xl">🔘</div>
+                    <div class="text-2xl">🔘</div>
+                </div>
+            </div>
+            {% include 'page_footer.html' %}
+        {% endfor -%}
+    {% endfor -%}
+{% endfor -%}
