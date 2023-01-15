@@ -2,7 +2,7 @@
     {% set months_loop = loop %}
     {% for week in calendar.Calendar().monthdatescalendar(year, month_num) -%}
         {% set week_num = week[0].isocalendar().week %}
-        {% set id =  (week[0].year if week[-1].year != (year + 1) else week[-1].year) ~ '-' ~ ('W%02d' % week_num) %}
+        {% set id = (week[0].year if week[-1].year != (year + 1) else week[-1].year) ~ '-' ~ ('W%02d' % week_num) %}
         {% include 'page_header.html' %}
         <div class="h-full grid grid-cols-1 gap-4 content-around p-4">
             <div class="flex justify-between text-2xl">
@@ -33,10 +33,12 @@
             <div class="grid grid-cols-2 gap-4 text-xl font-semibold">
                 <div class="grid gap-y-4">
                     {% for weekday_num in range(7) -%}
-                        <div class="h-[8rem] p-4 rounded-xl shadow-inner bg-zinc-200">
-                            <p class="{{ "text-slate-500" if week[weekday_num].year != year }}">
-                                {{ week[weekday_num].day }} {{ calendar.day_name[weekday_num] }}
+                        {% set date = week[weekday_num] %}
+                        <div class="h-[8rem] flex justify-between p-4 rounded-xl shadow-inner bg-zinc-200">
+                            <p class="{{ "text-slate-500" if date.year != year }}">
+                                {{ date.day }} {{ calendar.day_name[weekday_num] }}
                             </p>
+                            <a href="#{{ ('%02d-%02d-%d' % (date.day, date.month, date.year)) }}">↗️</a>
                         </div>
                     {% endfor -%}
                 </div>
