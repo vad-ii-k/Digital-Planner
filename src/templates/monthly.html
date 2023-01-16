@@ -5,18 +5,22 @@
         <div class="flex justify-between text-2xl">
             <div class="flex gap-2 font-semibold pl-3">
                   <p>{{ year }}</p>
-                  ➡️
+                  <img src="../src/icons/arrow-right.svg" width="25px"/>
                   <p class="text-indigo-600">{{ calendar.month_name[month_num] }}</p>
             </div>
             <div class="flex justify-between w-14">
                 <div class="absolute right-14">
                     {% if month_num != 1 %}
-                        <a href="#{{ year }}-{{ '%02d' % (month_num - 1) }}">⬅️</a>
+                        <a href="#{{ year }}-{{ '%02d' % (month_num - 1) }}">
+                            <img src="../src/icons/arrow-left-circle.svg" width="35px"/>
+                        </a>
                     {% endif %}
                 </div>
                 <div>
                     {% if month_num != 12 %}
-                        <a href="#{{ year }}-{{ '%02d' % (month_num + 1) }}">➡️</a>
+                        <a href="#{{ year }}-{{ '%02d' % (month_num + 1) }}">
+                            <img src="../src/icons/arrow-right-circle.svg" width="35px"/>
+                        </a>
                     {% endif %}
                 </div>
             </div>
@@ -27,7 +31,9 @@
                 <div class="flex text-xl">
                     <div class="pl-3 {{ "text-slate-300" if week[0].year != week[-1].year }}">Week {{ week_num }}</div>
                     <a class="pl-3"
-                       href="#{{ week[0].year if week[-1].year != (year + 1) else week[-1].year }}-{{ 'W%02d' % week_num }}">↗️</a>
+                       href="#{{ week[0].year if week[-1].year != (year + 1) else week[-1].year }}-{{ 'W%02d' % week_num }}">
+                        <img class="p-0.5 rounded-md border-2 border-sky-500" src="../src/icons/arrow-up-right.svg" width="22px"/>
+                    </a>
                 </div>
                 <div class="grid grid-cols-7 items-stretch gap-4 font-medium p-2">
                 {% for date in week -%}
@@ -37,13 +43,6 @@
                 {% endfor -%}
                 </div>
             {% endfor -%}
-        </div>
-        <div class="absolute inset-x-0 bottom-2 flex justify-center items-stretch gap-6">
-            <img src="../src/icons/calendar.svg" width="40"/>
-            <div class="text-2xl">🔘</div>
-            <div class="text-2xl">🔘</div>
-            <div class="text-2xl">🔘</div>
-            <div class="text-2xl">🔘</div>
         </div>
     </div>
     {% include 'page_footer.html' %}

@@ -11,7 +11,9 @@
             <div class="p-4 rounded-xl shadow-inner bg-zinc-200">
                 <div class="flex justify-between mb-2 text-xl">
                     <div class="pl-3">{{ month_name }}</div>
-                    <a class="pr-3" href="#{{ year }}-{{ '%02d' % month_num }}">↗️</a>
+                    <a class="pr-3" href="#{{ year }}-{{ '%02d' % month_num }}">
+                        <img class="p-0.5 rounded-md border-2 border-sky-500" src="../src/icons/arrow-up-right.svg" width="22px"/>
+                    </a>
                 </div>
                 <div class="grid grid-cols-8 gap-4 text-slate-400 text-sm mb-1">
                     <div></div>
@@ -34,12 +36,5 @@
             </div>
         {% endfor -%}
     </div>
-    <div class="flex justify-center items-stretch gap-6">
-        <img src="../src/icons/calendar.svg" width="40"/>
-        <div class="text-2xl">🔘</div>
-        <div class="text-2xl">🔘</div>
-        <div class="text-2xl">🔘</div>
-        <div class="text-2xl">🔘</div>
-    </div>
+    {% include 'page_footer.html' %}
 </div>
-{% include 'page_footer.html' %}
