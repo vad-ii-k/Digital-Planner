@@ -1,8 +1,8 @@
 {% for month_num in range(1, 13) -%}
     {% set id = year ~ '-' ~ ('%02d' % month_num) %}
     {% include 'page_header.html' %}
-    <div class="h-full grid grid-cols-1 gap-4 content-around p-4">
-        <div class="flex justify-between text-2xl">
+    <div class="content-around p-4">
+        <div class="flex justify-between text-2xl mb-4">
             <div class="flex gap-2 font-semibold pl-3">
                   <p>{{ year }}</p>
                   <img src="../src/icons/arrow-right.svg" width="25px"/>
@@ -26,21 +26,32 @@
             </div>
         </div>
         <div class="content-center">
-            {% for week in calendar.Calendar().monthdatescalendar(year, month_num) -%}
-                {% set week_num = week[0].isocalendar().week %}
-                <div class="flex text-xl">
-                    <div class="pl-3 {{ "text-slate-300" if week[0].year != week[-1].year }}">Week {{ week_num }}</div>
-                    <a class="pl-3"
-                       href="#{{ week[0].year if week[-1].year != (year + 1) else week[-1].year }}-{{ 'W%02d' % week_num }}">
-                        <img class="p-0.5 rounded-md border-2 border-sky-500" src="../src/icons/arrow-up-right.svg" width="22px"/>
-                    </a>
-                </div>
-                <div class="grid grid-cols-7 items-stretch gap-4 font-medium p-2">
-                {% for date in week -%}
-                    <div class="py-12 p-4 rounded-xl shadow-inner bg-zinc-200">
-                        <p class="{{ "text-slate-500" if date.month != month_num }}">{{ date.day }}</p>
-                    </div>
+            <div class="flex ml-[5rem] text-slate-500 text-xl">
+                {% for abbr in calendar.day_name -%}
+                    <div class="w-[15rem] text-center">{{ abbr }}</div>
                 {% endfor -%}
+            </div>
+            {% for week in calendar.Calendar().monthdatescalendar(year, month_num) -%}
+                <div class="flex h-[10rem]">
+                    {% set week_num = week[0].isocalendar().week %}
+                    <div class="w-[5rem] text-xl mt-16 {{ "text-slate-300" if week[0].year != week[-1].year }}">
+                        <a href="#{{ week[0].year if week[-1].year != (year + 1) else week[-1].year }}-{{ 'W%02d' % week_num }}">
+                            <p class="-rotate-90">
+                                Week {{ week_num }}
+                            </p>
+                        </a>
+                    </div>
+                    <div class="grid grid-cols-7 gap-4 items-stretch font-medium p-2">
+                    {% for date in week -%}
+                        <div class="w-[14rem] p-4 rounded-xl shadow-inner bg-zinc-200">
+                            <p class="{{ "text-slate-500" if date.month != month_num }}">
+                                <a href="#{{ ('%02d-%02d-%d' % (date.day, date.month, date.year)) }}">
+                                    {{ date.day }}
+                                </a>
+                            </p>
+                        </div>
+                    {% endfor -%}
+                    </div>
                 </div>
             {% endfor -%}
         </div>

@@ -4,8 +4,8 @@
         {% set week_num = week[0].isocalendar().week %}
         {% set id = (week[0].year if week[-1].year != (year + 1) else week[-1].year) ~ '-' ~ ('W%02d' % week_num) %}
         {% include 'page_header.html' %}
-        <div class="h-full grid grid-cols-1 gap-4 content-around p-4">
-            <div class="flex justify-between text-2xl">
+        <div class="h-full content-around p-4">
+            <div class="flex justify-between text-2xl mb-4">
                 <div class="flex gap-2 font-semibold pl-3">
                     <p>{{ week[0].year }}</p>
                     <img src="../src/icons/arrow-right.svg" width="25px"/>
@@ -35,11 +35,10 @@
                     {% for weekday_num in range(7) -%}
                         {% set date = week[weekday_num] %}
                         <div class="h-[8rem] flex justify-between p-4 rounded-xl shadow-inner bg-zinc-200">
-                            <p class="{{ "text-slate-500" if date.year != year }}">
-                                {{ date.day }} {{ calendar.day_name[weekday_num] }}
-                            </p>
                             <a href="#{{ ('%02d-%02d-%d' % (date.day, date.month, date.year)) }}">
-                                <img class="p-0.5 rounded-md border-2 border-sky-500" src="../src/icons/arrow-up-right.svg" width="22px"/>
+                                <p class="{{ "text-slate-500" if date.year != year }}">
+                                    {{ date.day }} {{ calendar.day_name[weekday_num] }}
+                                </p>
                             </a>
                         </div>
                     {% endfor -%}

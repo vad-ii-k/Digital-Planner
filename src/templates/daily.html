@@ -4,8 +4,8 @@
         {% for date in week -%}
             {% set id = ('%02d-%02d-%d' % (date.day, date.month, date.year)) %}
             {% include 'page_header.html' %}
-            <div class="h-full grid grid-cols-1 gap-4 content-around p-4">
-                <div class="flex justify-between text-2xl">
+            <div class="h-full content-around p-4">
+                <div class="flex justify-between text-2xl mb-4">
                     <div class="flex gap-2 font-semibold pl-3">
                         <p>{{ week[0].year }}</p>
                         <img src="../src/icons/arrow-right.svg" width="25px"/>

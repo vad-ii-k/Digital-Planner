@@ -9,12 +9,9 @@
         {% for month_name in calendar.month_name[1:] -%}
             {% set month_num = loop.index %}
             <div class="p-4 rounded-xl shadow-inner bg-zinc-200">
-                <div class="flex justify-between mb-2 text-xl">
-                    <div class="pl-3">{{ month_name }}</div>
-                    <a class="pr-3" href="#{{ year }}-{{ '%02d' % month_num }}">
-                        <img class="p-0.5 rounded-md border-2 border-sky-500" src="../src/icons/arrow-up-right.svg" width="22px"/>
-                    </a>
-                </div>
+                <a href="#{{ year }}-{{ '%02d' % month_num }}">
+                    <div class="pl-3 mb-2 text-xl">{{ month_name }}</div>
+                </a>
                 <div class="grid grid-cols-8 gap-4 text-slate-400 text-sm mb-1">
                     <div></div>
                     {% for abbr in calendar.day_abbr -%}
@@ -24,11 +21,18 @@
                 <div class="grid grid-cols-8 gap-4 text-center">
                     {% for week in calendar.Calendar().monthdatescalendar(year, month_num) -%}
                         <div class="{{ "text-sky-300" if week[0].year != week[-1].year else "text-sky-500" }}">
-                            {{ week[0].isocalendar().week }}
+                            {% set week_num = week[0].isocalendar().week %}
+                            <a href="#{{ (week[0].year if week[-1].year != (year + 1) else week[-1].year) ~ '-' ~ ('W%02d' % week_num) }}">
+                                {{ week[0].isocalendar().week }}
+                            </a>
                         </div>
                         {% for date in week -%}
                             <div>
-                                {% if date.month == month_num %}{{ date.day }}{% endif %}
+                                {% if date.month == month_num %}
+                                    <a href="#{{ ('%02d-%02d-%d' % (date.day, date.month, date.year)) }}">
+                                        {{ date.day }}
+                                    </a>
+                                {% endif %}
                             </div>
                         {% endfor -%}
                     {% endfor -%}
