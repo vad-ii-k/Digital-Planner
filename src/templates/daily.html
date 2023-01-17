@@ -1,7 +1,9 @@
 {% import 'components/calendar_page_header.html' as cph %}
+{% import 'components/calendar_pages_navigation.html' as cpn %}
 {% for month_num in range(1, 13) -%}
     {% set months_loop = loop %}
     {% for week in calendar.Calendar().monthdatescalendar(year, month_num) -%}
+        {% set weeks_loop = loop %}
         {% for date in week -%}
             {% set id = ('%02d-%02d-%d' % (date.day, date.month, date.year)) %}
             {% include 'page_header.html' %}
@@ -13,6 +15,14 @@
                             week[0].day ~ ' - ' ~ week[-1].day,
                             date.day ~ " " ~ calendar.day_name[loop.index0]
                     ]) }}
+                    {% set prev_date = date - timedelta(days=1) %}
+                    {% set next_date = date + timedelta(days=1) %}
+                    {{ cpn.calendar_pages_navigation(
+                            not (months_loop.first and weeks_loop.first and loop.first),
+                            ('%02d-%02d-%d' % (prev_date.day, prev_date.month, prev_date.year)),
+                            not (months_loop.last and weeks_loop.last and loop.last),
+                            ('%02d-%02d-%d' % (next_date.day, next_date.month, next_date.year))
+                    ) }}
                 </div>
                 <div class="grid grid-cols-2 gap-4 text-xl font-semibold">
                     <div class="content-box">

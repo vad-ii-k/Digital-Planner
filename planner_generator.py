@@ -2,6 +2,7 @@ import asyncio
 import calendar
 import locale
 import os
+from datetime import timedelta
 from os.path import abspath
 
 from jinja2 import Environment, FileSystemLoader
@@ -23,7 +24,7 @@ class PlannerBuilder:
         # locale.setlocale(locale.LC_ALL, 'ru_RU.UTF-8')
         for template_name in ['annual_overview', 'monthly', 'weekly', 'daily']:
             template = self.j2_env.get_template(f'{template_name}.html')
-            pages = await template.render_async(year=self.year, calendar=calendar)
+            pages = await template.render_async(year=self.year, calendar=calendar, timedelta=timedelta)
             self.pages.update({template_name: pages})
 
 
