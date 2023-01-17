@@ -1,3 +1,5 @@
+{% import 'components/calendar_page_header.html' as cph %}
+{% import 'components/calendar_pages_navigation.html' as cpn %}
 {% for month_num in range(1, 13) -%}
     {% set months_loop = loop %}
     {% for week in calendar.Calendar().monthdatescalendar(year, month_num) -%}
@@ -6,29 +8,17 @@
         {% include 'page_header.html' %}
         <div class="h-full content-around p-4">
             <div class="flex justify-between text-2xl mb-4">
-                <div class="flex gap-2 font-semibold pl-3">
-                    <p>{{ week[0].year }}</p>
-                    <img src="../src/icons/arrow-right.svg" width="25px"/>
-                    <p>{{ calendar.month_name[week[0].month] }}</p>
-                    <img src="../src/icons/arrow-right.svg" width="25px"/>
-                    <p class="text-indigo-600">{{ week[0].day ~ ' - ' ~ week[-1].day }}</p>
-                </div>
-                <div class="flex justify-between w-14">
-                    <div class="absolute right-14">
-                        {% if not (months_loop.first and loop.first) %}
-                            <a href="#{{ loop.previtem[0].year if loop.previtem is defined else week[0].year }}-{{ 'W%02d' % (week_num - 1 if week_num != 1 else 52) }}">
-                                <img src="../src/icons/arrow-left-circle.svg" width="35px"/>
-                            </a>
-                        {% endif %}
-                    </div>
-                    <div>
-                        {% if not (months_loop.last and loop.last) %}
-                            <a href="#{{ loop.nextitem[-1].year if loop.nextitem is defined else week[-1].year  }}-{{ 'W%02d' % (week_num % 52 + 1) }}">
-                                <img src="../src/icons/arrow-right-circle.svg" width="35px"/>
-                            </a>
-                        {% endif %}
-                    </div>
-                </div>
+                {{ cph.calendar_page_header([
+                        week[0].year,
+                        calendar.month_name[week[0].month],
+                        week[0].day ~ ' - ' ~ week[-1].day
+                ]) }}
+                {{ cpn.calendar_pages_navigation(
+                        not (months_loop.first and loop.first),
+                        (loop.previtem[0].year if loop.previtem is defined else week[0].year) ~ '-' ~ 'W%02d' % (week_num - 1 if week_num != 1 else 52),
+                        not (months_loop.last and loop.last),
+                        (loop.nextitem[-1].year if loop.nextitem is defined else week[-1].year) ~ '-' 'W%02d' % (week_num % 52 + 1)
+                ) }}
             </div>
             <div class="grid grid-cols-2 gap-4 text-xl font-semibold">
                 <div class="grid gap-y-4">

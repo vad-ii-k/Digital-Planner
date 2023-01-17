@@ -1,29 +1,20 @@
+{% import 'components/calendar_page_header.html' as cph %}
+{% import 'components/calendar_pages_navigation.html' as cpn %}
 {% for month_num in range(1, 13) -%}
     {% set id = year ~ '-' ~ ('%02d' % month_num) %}
     {% include 'page_header.html' %}
     <div class="content-around p-4">
         <div class="flex justify-between text-2xl mb-4">
-            <div class="flex gap-2 font-semibold pl-3">
-                  <p>{{ year }}</p>
-                  <img src="../src/icons/arrow-right.svg" width="25px"/>
-                  <p class="text-indigo-600">{{ calendar.month_name[month_num] }}</p>
-            </div>
-            <div class="flex justify-between w-14">
-                <div class="absolute right-14">
-                    {% if month_num != 1 %}
-                        <a href="#{{ year }}-{{ '%02d' % (month_num - 1) }}">
-                            <img src="../src/icons/arrow-left-circle.svg" width="35px"/>
-                        </a>
-                    {% endif %}
-                </div>
-                <div>
-                    {% if month_num != 12 %}
-                        <a href="#{{ year }}-{{ '%02d' % (month_num + 1) }}">
-                            <img src="../src/icons/arrow-right-circle.svg" width="35px"/>
-                        </a>
-                    {% endif %}
-                </div>
-            </div>
+            {{ cph.calendar_page_header([
+                    year,
+                    calendar.month_name[month_num]
+            ]) }}
+            {{ cpn.calendar_pages_navigation(
+                    month_num != 1,
+                    year ~ '-' ~ '%02d' % (month_num - 1),
+                    month_num != 12,
+                    year ~ '-' ~ '%02d' % (month_num + 1)
+            ) }}
         </div>
         <div class="content-center">
             <div class="flex ml-[5rem] text-slate-500 text-xl">
