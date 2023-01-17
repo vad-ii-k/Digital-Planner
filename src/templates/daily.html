@@ -6,7 +6,7 @@
             {% set id = ('%02d-%02d-%d' % (date.day, date.month, date.year)) %}
             {% include 'page_header.html' %}
             <div class="h-full content-around p-4">
-                <div class="flex justify-between text-2xl mb-4">
+                <div class="flex justify-between text-2xl mb-3">
                     {{ cph.calendar_page_header([
                             week[0].year,
                             calendar.month_name[week[0].month],
@@ -15,18 +15,20 @@
                     ]) }}
                 </div>
                 <div class="grid grid-cols-2 gap-4 text-xl font-semibold">
-                    <div class="p-4 rounded-xl shadow-inner bg-zinc-200">
+                    <div class="content-box">
                         Daily plan
                         <div class="grid divide-y divide-slate-300 divide-dashed">
                             {% for hour in range(7, 22) -%}
-                                <div class="p-4">{{ hour }}:00</div>
+                                <div class="py-4">
+                                    <p class="w-[3rem] text-right font-medium text-md text-slate-600">{{ hour }}:00</p>
+                                </div>
                             {% endfor %}
                             <div></div>
                         </div>
                     </div>
                     <div class="grid gap-y-4">
-                        <div class="h-[8rem] p-4 rounded-xl shadow-inner bg-zinc-200">Daily main focus</div>
-                        <div class="h-[27rem] p-4 rounded-xl shadow-inner bg-zinc-200">
+                        <div class="h-[8rem] content-box">Daily main focus</div>
+                        <div class="h-[27rem] content-box">
                             Tasks
                             <div class="grid grid-cols-2 gap-4">
                                 <div class="h-5/6 grid divide-y divide-slate-300 divide-dashed">
@@ -43,7 +45,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="h-[24rem] p-4 rounded-xl shadow-inner bg-zinc-200">Notes</div>
+                        <div class="h-[24rem] content-box">Notes</div>
                     </div>
                 </div>
                 {% include 'page_footer.html' %}

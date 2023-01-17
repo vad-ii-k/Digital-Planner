@@ -3,7 +3,7 @@
     {% for item in nav_list -%}
         <p class="{{ "text-indigo-600" if loop.last }}">{{ item }}</p>
         {% if not loop.last %}
-            <img src="../src/icons/arrow-right.svg" width="25px"/>
+            <img src="../src/icons/arrow-right.svg" class="pb-1" width="25px"/>
         {% endif %}
     {% endfor %}
 </div>
