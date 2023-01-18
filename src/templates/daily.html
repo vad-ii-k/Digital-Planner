@@ -40,24 +40,29 @@
                         <div class="h-[8rem] content-box">Daily main focus</div>
                         <div class="h-[27rem] content-box">
                             Tasks
-                            <div class="grid grid-cols-2 gap-4">
-                                <div class="h-5/6 grid divide-y divide-slate-300 divide-dashed">
-                                    {% for _ in range(7) -%}
-                                        <div class="p-3">⚪️</div>
-                                    {% endfor %}
-                                    <div></div>
-                                </div>
-                                <div class="h-5/6 grid divide-y divide-slate-300 divide-dashed">
-                                    {% for _ in range(7) -%}
-                                        <div class="p-3">⚪️</div>
-                                    {% endfor %}
-                                    <div></div>
+                            <div class="grid grid-cols-2 gap-6">
+                                {% for _ in range(2) -%}
+                                    <div class="h-5/6 grid divide-y divide-slate-300 divide-dashed">
+                                        {% for _ in range(6) -%}
+                                            <div class="px-2 py-3">
+                                                <div class="shadow-inner rounded-full border-4 w-[1.75rem] h-[1.75rem]"></div>
+                                            </div>
+                                        {% endfor %}
+                                        <div></div>
+                                    </div>
+                                {% endfor %}
+                                <div class="col-span-2 flex justify-end gap-2 h-[2rem]">
+                                    <p class="flex items-center font-medium text-md text-slate-400">Not today? Add to Someday</p>
+                                    <a href="#inbox">
+                                        <img src="../src/icons/plus-circle.svg" width="30px"/>
+                                    </a>
                                 </div>
                             </div>
                         </div>
                         <div class="h-[24rem] content-box">Notes</div>
                     </div>
                 </div>
+                {% set curr_template = "calendar" %}
                 {% include 'page_footer.html' %}
             </div>
         {% endfor -%}
