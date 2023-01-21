@@ -1,0 +1,61 @@
+{% import 'components/calendar_page_header.html' as cph %}
+{% import 'components/calendar_pages_navigation.html' as cpn %}
+{% set id = 'projects' %}
+{% include 'page_header.html' %}
+<div class="h-full grid grid-cols-1 gap-4 content-around p-4">
+    <div class="text-indigo-600 text-2xl font-semibold pl-3">
+        Projects
+    </div>
+    <div class="grid grid-cols-2 gap-4 place-content-stretch font-medium p-2">
+        {% for index in range(6) %}
+            <div class="h-[20rem] content-box text-xl">
+                <div class="h-5/6 grid divide-y divide-slate-300 divide-dashed">
+                    <a href="#project-{{ index }}">
+                        <p class="py-3">Name</p>
+                    </a>
+                    <p class="py-3">Description</p>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    {% set curr_template = "projects" %}
+    {% include 'page_footer.html' %}
+</div>
+{% for index in range(6) %}
+    {% set id = 'project-' ~ index %}
+    {% include 'page_header.html' %}
+    <div class="h-full grid grid-cols-1 gap-4 content-around p-4">
+        <div class="flex justify-between text-2xl mb-3">
+            {{ cph.calendar_page_header([
+                'Projects',
+                'Project details'
+            ]) }}
+            {{ cpn.calendar_pages_navigation(
+                    not loop.first,
+                    'project-' ~ (index - 1),
+                    not loop.last,
+                    'project-' ~ (index + 1)
+            ) }}
+        </div>
+        <div class="grid grid-cols-2 gap-4 text-xl font-semibold">
+            <div class="content-box">
+                Tasks
+                <div class="grid divide-y divide-slate-300 divide-dashed">
+                    {% for _ in range(15) -%}
+                        <div class="py-4">
+                            <div class="shadow-inner rounded-full border-4 w-[1.75rem] h-[1.75rem]"></div>
+                        </div>
+                    {% endfor %}
+                    <div></div>
+                </div>
+            </div>
+            <div class="grid gap-y-4">
+                <div class="h-[8rem] content-box">Project goal</div>
+                <div class="h-[27rem] content-box">Notes</div>
+                <div class="h-[24rem] content-box">Project summary</div>
+            </div>
+        </div>
+        {% set curr_template = "projects" %}
+        {% include 'page_footer.html' %}
+    </div>
+{% endfor %}
