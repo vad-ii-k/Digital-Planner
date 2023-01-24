@@ -1,9 +1,9 @@
 {% set id = year %}
 {% include 'page_header.html' %}
 <div class="h-full grid grid-cols-1 gap-4 content-around p-4">
-    <div class="flex gap-2 text-2xl font-semibold pl-3">
-        <p>{{ year }}</p>
-        <p class="text-indigo-600">Planner</p>
+    <div class="flex gap-2 color-header pl-3">
+        <p class="text-dark dark:text-white">{{ year }}</p>
+        <p>Planner</p>
     </div>
     <div class="grid grid-cols-4 gap-4 place-content-stretch font-medium h-2/3 p-2">
         {% for month_name in calendar.month_name[1:] -%}
@@ -20,7 +20,7 @@
                 </div>
                 <div class="grid grid-cols-8 gap-4 text-center">
                     {% for week in calendar.Calendar().monthdatescalendar(year, month_num) -%}
-                        <div class="{{ "text-sky-300" if week[0].year != week[-1].year else "text-sky-500" }}">
+                        <div class="{{ "text-indigo-300" if week[0].year != week[-1].year else "text-indigo-500 dark:text-indigo-400" }}">
                             {% set week_num = week[0].isocalendar().week %}
                             <a href="#{{ (week[0].year if week[-1].year != (year + 1) else week[-1].year) ~ '-' ~ ('W%02d' % week_num) }}">
                                 {{ week[0].isocalendar().week }}

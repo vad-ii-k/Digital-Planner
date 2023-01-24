@@ -9,5 +9,9 @@
 }
 
 .content-box {
-    @apply p-4 rounded-xl shadow-2xl bg-zinc-100;
+    @apply p-4 rounded-xl shadow-xl dark:shadow-md bg-zinc-100 dark:shadow-white/30 dark:bg-black/10;
+}
+
+.color-header {
+    @apply text-2xl font-semibold text-indigo-600 dark:text-indigo-400;
 }

@@ -1,15 +1,15 @@
     <div class="h-[3rem] absolute inset-x-0 bottom-2 flex justify-center items-stretch gap-6">
-        <div class="{{ "opacity-50" if curr_template != "calendar" }}">
+        <div class="dark:invert {{ "opacity-50" if curr_template != "calendar" }}">
             <a href="#{{ year }}">
                 <img  src="../src/icons/calendar.svg" width="50px"/>
             </a>
         </div>
-        <div class="{{ "opacity-50" if curr_template != "inbox" }}">
+        <div class="dark:invert {{ "opacity-50" if curr_template != "inbox" }}">
             <a href="#inbox">
                 <img src="../src/icons/inbox-arrow-down.svg" width="50px"/>
             </a>
         </div>
-        <div class="{{ "opacity-50" if curr_template != "projects" }}">
+        <div class="dark:invert {{ "opacity-50" if curr_template != "projects" }}">
             <a href="#projects">
                 <img src="../src/icons/briefcase.svg" width="50px"/>
             </a>

@@ -1,9 +1,9 @@
 {% macro calendar_page_header(nav_list) -%}
-<div class="flex gap-2 font-semibold pl-3">
+<div class="flex gap-2 font-semibold text-2xl pl-3">
     {% for item in nav_list -%}
-        <p class="{{ "text-indigo-600" if loop.last }}">{{ item }}</p>
+        <p class="{{ "color-header" if loop.last }}">{{ item }}</p>
         {% if not loop.last %}
-            <img src="../src/icons/arrow-right.svg" class="pb-1" width="25px"/>
+            <img src="../src/icons/arrow-right.svg" class="dark:invert pb-1" width="25px"/>
         {% endif %}
     {% endfor %}
 </div>

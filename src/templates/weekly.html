@@ -7,7 +7,7 @@
         {% set id = (week[0].year if week[-1].year != (year + 1) else week[-1].year) ~ '-' ~ ('W%02d' % week_num) %}
         {% include 'page_header.html' %}
         <div class="h-full content-around p-4">
-            <div class="flex justify-between text-2xl mb-3">
+            <div class="flex justify-between mb-3">
                 {{ cph.calendar_page_header([
                         week[0].year,
                         calendar.month_name[week[0].month],
@@ -40,7 +40,7 @@
                         <div class="h-5/6 grid divide-y divide-slate-300 divide-dashed">
                             {% for _ in range(4) -%}
                                 <div class="px-2 py-3">
-                                    <img src="../src/icons/arrow-up-circle.svg" width="30px"/>
+                                    <img src="../src/icons/arrow-up-circle.svg" class="dark:invert" width="30px"/>
                                 </div>
                             {% endfor %}
                             <div></div>

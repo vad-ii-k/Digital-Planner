@@ -4,7 +4,7 @@
     {% set id = year ~ '-' ~ ('%02d' % month_num) %}
     {% include 'page_header.html' %}
     <div class="content-around p-4">
-        <div class="flex justify-between text-2xl mb-3">
+        <div class="flex justify-between mb-3">
             {{ cph.calendar_page_header([
                     year,
                     calendar.month_name[month_num]
@@ -17,9 +17,9 @@
             ) }}
         </div>
         <div class="content-center">
-            <div class="flex ml-[5rem] text-slate-500 text-xl">
+            <div class="flex ml-[5rem] text-xl">
                 {% for abbr in calendar.day_name -%}
-                    <div class="w-[15rem] text-center">{{ abbr }}</div>
+                    <div class="w-[15rem] text-center text-slate-500 dark:text-slate-300">{{ abbr }}</div>
                 {% endfor -%}
             </div>
             {% for week in calendar.Calendar().monthdatescalendar(year, month_num) -%}
