@@ -25,7 +25,7 @@
             {% for week in calendar.Calendar().monthdatescalendar(year, month_num) -%}
                 <div class="flex h-[10rem]">
                     {% set week_num = week[0].isocalendar().week %}
-                    <div class="w-[5rem] text-xl mt-16 {{ "text-slate-300" if week[0].year != week[-1].year }}">
+                    <div class="w-[5rem] text-xl mt-16 {{ "opacity-50" if week[0].year != week[-1].year }}">
                         <a href="#{{ week[0].year if week[-1].year != (year + 1) else week[-1].year }}-{{ 'W%02d' % week_num }}">
                             <p class="-rotate-90">
                                 Week {{ week_num }}
@@ -35,7 +35,7 @@
                     <div class="grid grid-cols-7 gap-4 items-stretch font-medium p-2">
                     {% for date in week -%}
                         <div class="w-[14rem] content-box">
-                            <p class="{{ "text-slate-500" if date.month != month_num }}">
+                            <p class="{{ "opacity-50" if date.month != month_num }}">
                                 <a href="#{{ ('%02d-%02d-%d' % (date.day, date.month, date.year)) }}">
                                     {{ date.day }}
                                 </a>

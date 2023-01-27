@@ -26,7 +26,7 @@
                         {% set date = week[weekday_num] %}
                         <div class="h-[8rem] flex justify-between content-box">
                             <a href="#{{ ('%02d-%02d-%d' % (date.day, date.month, date.year)) }}">
-                                <p class="font-medium {{ "text-slate-500" if date.year != year }}">
+                                <p class="font-medium {{ "opacity-50" if date.year != year }}">
                                     {{ date.day }} {{ calendar.day_name[weekday_num] }}
                                 </p>
                             </a>

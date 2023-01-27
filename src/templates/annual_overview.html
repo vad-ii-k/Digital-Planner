@@ -12,7 +12,7 @@
                 <a href="#{{ year }}-{{ '%02d' % month_num }}">
                     <div class="pl-3 mb-2 text-xl">{{ month_name }}</div>
                 </a>
-                <div class="grid grid-cols-8 gap-4 text-slate-400 text-sm mb-1">
+                <div class="grid grid-cols-8 gap-4 text-slate-500 text-sm mb-1">
                     <div></div>
                     {% for abbr in calendar.day_abbr -%}
                         <div>{{ abbr }}</div>
@@ -20,7 +20,7 @@
                 </div>
                 <div class="grid grid-cols-8 gap-4 text-center">
                     {% for week in calendar.Calendar().monthdatescalendar(year, month_num) -%}
-                        <div class="{{ "text-indigo-300" if week[0].year != week[-1].year else "text-indigo-500 dark:text-indigo-400" }}">
+                        <div class="text-indigo-500 dark:text-indigo-400 {{ "opacity-50" if week[0].year != week[-1].year }}">
                             {% set week_num = week[0].isocalendar().week %}
                             <a href="#{{ (week[0].year if week[-1].year != (year + 1) else week[-1].year) ~ '-' ~ ('W%02d' % week_num) }}">
                                 {{ week[0].isocalendar().week }}
