@@ -22,7 +22,7 @@ class PlannerBuilder:
 
     async def add_pages(self):
         # locale.setlocale(locale.LC_ALL, 'ru_RU.UTF-8')
-        for template_name in ['annual_overview', 'monthly', 'weekly', 'daily', 'inbox']:
+        for template_name in ['annual_overview', 'monthly', 'weekly', 'daily', 'inbox', 'projects', 'habits']:
             template = self.j2_env.get_template(f'{template_name}.html')
             pages = await template.render_async(year=self.year, calendar=calendar, timedelta=timedelta)
             self.pages.update({template_name: pages})
@@ -51,7 +51,7 @@ async def main():
 
     os.chdir(os.path.join(os.path.dirname(__file__)))
     await generate_html(planner, './dest/index.html')
-    await generate_pdf('./dest/index.html', './dest/main.css', './dest/planner.pdf')
+    # await generate_pdf('./dest/index.html', './dest/main.css', './dest/planner.pdf')
 
 
 if __name__ == "__main__":

@@ -1,0 +1,59 @@
+{% import 'components/calendar_page_header.html' as cph %}
+{% import 'components/calendar_pages_navigation.html' as cpn %}
+{% set id = 'habits' %}
+{% include 'page_header.html' %}
+<div class="h-full grid grid-cols-1 gap-4 content-around p-4">
+    <div class="pl-3 color-header">
+        Habits
+    </div>
+    {% set curr_template = "habits" %}
+    {% include 'page_footer.html' %}
+</div>
+{% for month_num in range(1, 13) %}
+    {% set id = 'habits-' ~ month_num %}
+    {% include 'page_header.html' %}
+    <div class="h-full grid grid-cols-1 gap-4 content-around p-4">
+        <div class="flex justify-between text-2xl mb-3">
+            {{ cph.calendar_page_header([
+                'Habits',
+                calendar.month_name[month_num]
+            ]) }}
+            {{ cpn.calendar_pages_navigation(
+                    not loop.first,
+                    'habits-' ~ (month_num - 1),
+                    not loop.last,
+                    'habits-' ~ (month_num + 1)
+            ) }}
+        </div>
+        <div class="content-box text-xl font-semibold">
+            <div class="ml-[12rem] flex justify-around mb-2">
+               {% for day in calendar.Calendar().itermonthdays(year, month_num) %}
+                   {% if day != 0 %}
+                       <div class="w-[1.5rem] text-center">
+                           <a href="{{ '%02d-%02d-%d' % (day, month_num, year) }}">
+                               {{ day }}
+                           </a>
+                       </div>
+                   {% endif %}
+                {% endfor %}
+            </div>
+            {% for _ in range(7) %}
+                <div class="h-[6rem] {{ "bg-indigo-50 dark:bg-neutral-800" if loop.index0 % 2 == 0 }} rounded-xl">
+                    <div class="flex justify-around">
+                        <div class="w-[11.75rem] mt-16 pl-3">
+                            <hr width="90%"/>
+                        </div>
+                        {% for day in calendar.Calendar().itermonthdays(year, month_num) %}
+                           {% if day != 0 %}
+                               <img src="../src/icons/star.svg" class="py-[1.75rem] dark:invert" width="45px"/>
+                           {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        <div class="content-box h-[13rem] text-xl font-semibold">Notes</div>
+        {% set curr_template = "habits" %}
+        {% include 'page_footer.html' %}
+    </div>
+{% endfor %}

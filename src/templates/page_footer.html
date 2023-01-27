@@ -14,5 +14,10 @@
                 <img src="../src/icons/briefcase.svg" width="50px"/>
             </a>
         </div>
+        <div class="dark:invert {{ "opacity-50" if curr_template != "habits" }}">
+            <a href="#habits{{ '-' ~ month_num if month_num is defined }}">
+                <img src="../src/icons/chart-bar-square.svg" width="50px"/>
+            </a>
+        </div>
     </div>
 </div>
