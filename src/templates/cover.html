@@ -1,16 +1,16 @@
 <div class="w-gn-landscape h-gn-landscape break-after-page relative bg-gradient-to-br from-purple-200 via-indigo-400 to-violet-600 dark:from-neutral-600 dark:to-violet-600">
-    <div class="flex justify-center gap-10 pt-80 font-bold text-white text-[15rem] text-center drop-shadow-2xl tracking-widest">
-        <p class="w-[20rem] skew-x-6 skew-y-6">
-            2
+    <div class="flex justify-center pt-40 font-bold text-white text-[13rem] text-center drop-shadow-2xl tracking-widest">
+        <p class="w-[15rem] skew-x-6 skew-y-6">
+            {{ year // 1000 }}
         </p>
-        <p class="w-[20rem] -skew-x-6 -skew-y-6 translate-y-3">
-            0
+        <p class="w-[15rem] -skew-x-6 -skew-y-6 translate-y-3">
+            {{ year // 100 % 10 }}
         </p>
-        <p class="w-[20rem] skew-x-6 skew-y-6">
-            2
+        <p class="w-[15rem] skew-x-6 skew-y-6">
+            {{ year // 10 % 10 }}
         </p>
-        <p class="w-[20rem] -skew-x-6 -skew-y-6 translate-y-3">
-            3
+        <p class="w-[15rem] -skew-x-6 -skew-y-6 translate-y-3">
+            {{ year % 10 }}
         </p>
     </div>
 </div>

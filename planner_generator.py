@@ -22,7 +22,7 @@ class PlannerBuilder:
 
     async def add_pages(self):
         # locale.setlocale(locale.LC_ALL, 'ru_RU.UTF-8')
-        for template_name in ['annual_overview', 'monthly', 'weekly', 'daily', 'inbox', 'projects', 'habits']:
+        for template_name in ['cover', 'annual_overview', 'monthly', 'weekly', 'daily', 'inbox', 'projects', 'habits']:
             template = self.j2_env.get_template(f'{template_name}.html')
             pages = await template.render_async(year=self.year, calendar=calendar, timedelta=timedelta)
             self.pages.update({template_name: pages})
@@ -39,7 +39,7 @@ async def generate_pdf(html_file_path: str, css_file_path: str, out_file_path: s
         page = await browser.new_page()
         await page.goto(f"file://{abspath(html_file_path)}")
         await page.add_style_tag(path=abspath(css_file_path))
-        await page.pdf(path=abspath(out_file_path), width='18.83in', height='11.77in', print_background=True)
+        await page.pdf(path=abspath(out_file_path), width='11.7in', height='8.27in', print_background=True)
         await browser.close()
 
 
@@ -51,7 +51,7 @@ async def main():
 
     os.chdir(os.path.join(os.path.dirname(__file__)))
     await generate_html(planner, './dest/index.html')
-    # await generate_pdf('./dest/index.html', './dest/main.css', './dest/planner.pdf')
+    await generate_pdf('./dest/index.html', './dest/main.css', './dest/planner.pdf')
 
 
 if __name__ == "__main__":

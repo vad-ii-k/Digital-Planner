@@ -4,10 +4,10 @@ module.exports = {
   darkMode: 'class',
   theme: {
     width: {
-        'gn-landscape': '18.82in'
+        'gn-landscape': '11.7in'
       },
       height: {
-        'gn-landscape': '11.76in'
+        'gn-landscape': '8.26in'
       },
   },
   plugins: [],

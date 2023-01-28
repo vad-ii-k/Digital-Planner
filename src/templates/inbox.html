@@ -1,24 +1,25 @@
 {% set id = "inbox" %}
 {% include 'page_header.html' %}
-<div class="h-full grid grid-cols-1 gap-4 content-around p-4">
-    <p class="pl-3 color-header">Someday</p>
-    <div class="grid grid-cols-3 gap-4 place-content-stretch text-xl font-semibold h-2/3 p-2">
+<div class="h-full grid grid-cols-1 gap-2 content-around p-3">
+    <p class="pl-1 color-header">Someday</p>
+    <div class="grid grid-cols-3 gap-2 place-content-stretch text-md font-semibold h-2/3 p-1">
         {% for _ in range(9) -%}
-            <div class="content-box h-[20rem] w-[35rem]">
+            <div class="content-box h-[14rem] w-[22rem]">
                 <p>Backlog card</p>
-                <div class="h-5/6 grid divide-y divide-slate-300 divide-dashed font-medium text-md text-slate-500">
-                    <div class="flex justify-between h-[4rem]">
-                        <img src="../src/icons/check-circle.svg" class="dark:invert" width="30px"/>
+                <div class="h-5/6 grid divide-y divide-slate-300 divide-dashed font-medium text-sm text-slate-500 p-1">
+                    <div class="flex justify-between h-[3rem]">
+                        <img src="../src/icons/check-circle.svg" class="dark:invert" width="25px"/>
                         <p class="flex items-center">Task</p>
                     </div>
-                    <div class="flex justify-between h-[8rem]">
-                        <img src="../src/icons/information-circle.svg" class="dark:invert" width="30px"/>
+                    <div class="flex justify-between h-[5rem]">
+                        <img src="../src/icons/information-circle.svg" class="dark:invert" width="25px"/>
                         <p class="flex items-center">Details</p>
                     </div>
-                    <div class="flex justify-between h-[4rem]">
-                        <img src="../src/icons/flag.svg" class="dark:invert" width="30px"/>
+                    <div class="flex justify-between h-[3rem]">
+                        <img src="../src/icons/flag.svg" class="dark:invert" width="25px"/>
                         <p class="flex items-center">Deadline</p>
                     </div>
+                    <div></div>
                 </div>
             </div>
         {% endfor -%}

@@ -3,8 +3,8 @@
 {% for month_num in range(1, 13) -%}
     {% set id = year ~ '-' ~ ('%02d' % month_num) %}
     {% include 'page_header.html' %}
-    <div class="content-around p-4">
-        <div class="flex justify-between mb-3">
+    <div class="content-around p-3">
+        <div class="flex justify-between mb-1">
             {{ cph.calendar_page_header([
                     year,
                     calendar.month_name[month_num]
@@ -17,24 +17,24 @@
             ) }}
         </div>
         <div class="content-center">
-            <div class="flex ml-[5rem] text-xl">
+            <div class="flex ml-[4rem] gap-2 text-md">
                 {% for abbr in calendar.day_name -%}
-                    <div class="w-[15rem] text-center text-slate-500 dark:text-slate-300">{{ abbr }}</div>
+                    <div class="w-[9rem] text-center">{{ abbr }}</div>
                 {% endfor -%}
             </div>
             {% for week in calendar.Calendar().monthdatescalendar(year, month_num) -%}
-                <div class="flex h-[10rem]">
+                <div class="flex h-[6.7rem] m-1">
                     {% set week_num = week[0].isocalendar().week %}
-                    <div class="w-[5rem] text-xl mt-16 {{ "opacity-50" if week[0].year != week[-1].year }}">
-                        <a href="#{{ week[0].year if week[-1].year != (year + 1) else week[-1].year }}-{{ 'W%02d' % week_num }}">
-                            <p class="-rotate-90">
+                    <div class="w-[3rem] text-md {{ "opacity-50" if week[0].year != week[-1].year }}">
+                        <p class="w-[5rem] -rotate-90 pb-10 pr-3">
+                            <a href="#{{ week[0].year if week[-1].year != (year + 1) else week[-1].year }}-{{ 'W%02d' % week_num }}">
                                 Week {{ week_num }}
-                            </p>
-                        </a>
+                            </a>
+                        </p>
                     </div>
-                    <div class="grid grid-cols-7 gap-4 items-stretch font-medium p-2">
+                    <div class="grid grid-cols-7 gap-2 items-stretch font-medium">
                     {% for date in week -%}
-                        <div class="w-[14rem] content-box">
+                        <div class="w-[9rem] content-box">
                             <p class="{{ "opacity-50" if date.month != month_num }}">
                                 <a href="#{{ ('%02d-%02d-%d' % (date.day, date.month, date.year)) }}">
                                     {{ date.day }}

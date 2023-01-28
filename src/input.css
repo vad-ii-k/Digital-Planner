@@ -3,15 +3,15 @@
 @tailwind utilities;
 
 @page {
-    size: 18.83in 11.77in;
+    size: 11.7in 8.27in;
     margin: 0;
     padding: 0;
 }
 
 .content-box {
-    @apply p-4 rounded-xl shadow-xl dark:shadow-md bg-zinc-100 dark:shadow-white/30 dark:bg-black/10;
+    @apply p-2 rounded-xl border-2 border-indigo-300/50 bg-zinc-100;
 }
 
 .color-header {
-    @apply text-2xl font-semibold text-indigo-600 dark:text-indigo-400;
+    @apply text-xl font-semibold text-indigo-600 dark:text-indigo-400;
 }

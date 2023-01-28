@@ -1,16 +1,16 @@
 {% macro calendar_pages_navigation(prev_condition, prev_id, next_condition, next_id) -%}
-<div class="flex justify-between w-14">
-    <div class="absolute right-14">
+<div class="flex justify-between w-10">
+    <div class="absolute right-10">
         {% if prev_condition %}
             <a href="#{{ prev_id }}">
-                <img src="../src/icons/arrow-left-circle.svg" width="37px"/>
+                <img src="../src/icons/arrow-left-circle.svg" width="30px"/>
             </a>
         {% endif %}
     </div>
     <div>
         {% if next_condition %}
             <a href="#{{ next_id }}">
-                <img src="../src/icons/arrow-right-circle.svg" width="37px"/>
+                <img src="../src/icons/arrow-right-circle.svg" width="30px"/>
             </a>
         {% endif %}
     </div>

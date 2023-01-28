@@ -1,26 +1,26 @@
 {% set id = year %}
 {% include 'page_header.html' %}
-<div class="h-full grid grid-cols-1 gap-4 content-around p-4">
-    <div class="flex gap-2 color-header pl-3">
-        <p class="text-dark dark:text-white">{{ year }}</p>
-        <p>Planner</p>
+<div class="p-3">
+    <div class="flex gap-2 mb-1">
+        <p class="text-xl font-semibold">{{ year }}</p>
+        <p class="color-header">Planner</p>
     </div>
-    <div class="grid grid-cols-4 gap-4 place-content-stretch font-medium h-2/3 p-2">
+    <div class="grid grid-cols-4 gap-2 place-content-stretch font-normal text-center">
         {% for month_name in calendar.month_name[1:] -%}
             {% set month_num = loop.index %}
             <div class="content-box">
                 <a href="#{{ year }}-{{ '%02d' % month_num }}">
-                    <div class="pl-3 mb-2 text-xl">{{ month_name }}</div>
+                    <div class="text-md mb-1">{{ month_name }}</div>
                 </a>
-                <div class="grid grid-cols-8 gap-4 text-slate-500 text-sm mb-1">
+                <div class="grid grid-cols-8 gap-1 text-slate-500 text-xs mb-1">
                     <div></div>
                     {% for abbr in calendar.day_abbr -%}
                         <div>{{ abbr }}</div>
                     {% endfor -%}
                 </div>
-                <div class="grid grid-cols-8 gap-4 text-center">
+                <div class="grid grid-cols-8 gap-2 text-sm">
                     {% for week in calendar.Calendar().monthdatescalendar(year, month_num) -%}
-                        <div class="text-indigo-500 dark:text-indigo-400 {{ "opacity-50" if week[0].year != week[-1].year }}">
+                        <div class="font-medium text-indigo-500 dark:text-indigo-400 {{ "opacity-50" if week[0].year != week[-1].year }}">
                             {% set week_num = week[0].isocalendar().week %}
                             <a href="#{{ (week[0].year if week[-1].year != (year + 1) else week[-1].year) ~ '-' ~ ('W%02d' % week_num) }}">
                                 {{ week[0].isocalendar().week }}

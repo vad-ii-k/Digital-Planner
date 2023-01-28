@@ -1,22 +1,22 @@
-    <div class="h-[3rem] absolute inset-x-0 bottom-2 flex justify-center items-stretch gap-6">
+    <div class="h-[2.5rem] absolute inset-x-0 bottom-1 flex justify-center items-stretch gap-2">
         <div class="dark:invert {{ "opacity-50" if curr_template != "calendar" }}">
             <a href="#{{ year }}">
-                <img  src="../src/icons/calendar.svg" width="50px"/>
+                <img  src="../src/icons/calendar.svg" width="40px"/>
             </a>
         </div>
         <div class="dark:invert {{ "opacity-50" if curr_template != "inbox" }}">
             <a href="#inbox">
-                <img src="../src/icons/inbox-arrow-down.svg" width="50px"/>
+                <img src="../src/icons/inbox-arrow-down.svg" width="40px"/>
             </a>
         </div>
         <div class="dark:invert {{ "opacity-50" if curr_template != "projects" }}">
             <a href="#projects">
-                <img src="../src/icons/briefcase.svg" width="50px"/>
+                <img src="../src/icons/briefcase.svg" width="40px"/>
             </a>
         </div>
         <div class="dark:invert {{ "opacity-50" if curr_template != "habits" }}">
             <a href="#habits{{ '-' ~ month_num if month_num is defined }}">
-                <img src="../src/icons/chart-bar-square.svg" width="50px"/>
+                <img src="../src/icons/chart-bar-square.svg" width="40px"/>
             </a>
         </div>
     </div>
