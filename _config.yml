@@ -5,5 +5,5 @@ description: A free digital planner, that helps you achieve your goals
 show_downloads: true
 
 github:
-  light_url: https://github.com/vad-ii-k/PDF-planner/raw/github-pages/planners/planner-2023-light.pdf
-  dark_url: https://github.com/vad-ii-k/PDF-planner/raw/github-pages/planners/planner-2023-dark.pdf
+  light_url: https://github.com/vad-ii-k/PDF-planner/raw/master/planners/planner-2023-light.pdf
+  dark_url: https://github.com/vad-ii-k/PDF-planner/raw/master/planners/planner-2023-dark.pdf
