@@ -1,22 +1,22 @@
     <div class="h-[2.5rem] absolute inset-x-0 bottom-1 flex justify-center items-stretch gap-2">
-        <div class="dark:invert {{ "opacity-50" if curr_template != "calendar" }}">
+        <div class="{{ "opacity-50" if curr_template != "calendar" }}">
             <a href="#{{ year }}">
-                <img  src="../src/icons/calendar.svg" width="40px"/>
+                <img  src="../src/icons/calendar.svg" class="dark:invert" width="40px"/>
             </a>
         </div>
-        <div class="dark:invert {{ "opacity-50" if curr_template != "inbox" }}">
+        <div class="{{ "opacity-50" if curr_template != "inbox" }}">
             <a href="#inbox">
-                <img src="../src/icons/inbox-arrow-down.svg" width="40px"/>
+                <img src="../src/icons/inbox-arrow-down.svg" class="dark:invert" width="40px"/>
             </a>
         </div>
-        <div class="dark:invert {{ "opacity-50" if curr_template != "projects" }}">
+        <div class="{{ "opacity-50" if curr_template != "projects" }}">
             <a href="#projects">
-                <img src="../src/icons/briefcase.svg" width="40px"/>
+                <img src="../src/icons/briefcase.svg" class="dark:invert" width="40px"/>
             </a>
         </div>
-        <div class="dark:invert {{ "opacity-50" if curr_template != "habits" }}">
-            <a href="#habits{{ '-' ~ month_num if month_num is defined }}">
-                <img src="../src/icons/chart-bar-square.svg" width="40px"/>
+        <div class="{{ "opacity-50" if curr_template != "habits" }}">
+            <a href="#habits{{ '-' ~ (month_num if month_num is defined else '1') }}">
+                <img src="../src/icons/chart-bar-square.svg" class="dark:invert" width="40px"/>
             </a>
         </div>
     </div>

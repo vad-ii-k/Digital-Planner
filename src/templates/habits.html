@@ -1,36 +1,27 @@
 {% import 'components/calendar_page_header.html' as cph %}
 {% import 'components/calendar_pages_navigation.html' as cpn %}
-{% set id = 'habits' %}
-{% include 'page_header.html' %}
-<div class="h-full grid grid-cols-1 gap-2 content-around p-3">
-    <div class="pl-1 color-header">
-        Habits
-    </div>
-    {% set curr_template = "habits" %}
-    {% include 'page_footer.html' %}
-</div>
-{% for month_num in range(1, 13) %}
-    {% set id = 'habits-' ~ month_num %}
+{% for _month_num in range(1, 13) %}
+    {% set id = 'habits-' ~ _month_num %}
     {% include 'page_header.html' %}
     <div class="h-full grid grid-cols-1 gap-2 content-around p-3">
         <div class="flex justify-between mb-1">
             {{ cph.calendar_page_header([
                 'Habits',
-                calendar.month_name[month_num]
+                calendar.month_name[_month_num]
             ]) }}
             {{ cpn.calendar_pages_navigation(
                     not loop.first,
-                    'habits-' ~ (month_num - 1),
+                    'habits-' ~ (_month_num - 1),
                     not loop.last,
-                    'habits-' ~ (month_num + 1)
+                    'habits-' ~ (_month_num + 1)
             ) }}
         </div>
-        <div class="content-box text-md font-semibold">
+        <div class="content-box text-md">
             <div class="ml-[6.75rem] flex justify-around mb-2">
-               {% for day in calendar.Calendar().itermonthdays(year, month_num) %}
+               {% for day in calendar.Calendar().itermonthdays(year, _month_num) %}
                    {% if day != 0 %}
                        <div class="w-[1.5rem] text-center">
-                           <a href="#{{ '%02d-%02d-%d' % (day, month_num, year) }}">
+                           <a href="#{{ '%02d-%02d-%d' % (day, _month_num, year) }}">
                                {{ day }}
                            </a>
                        </div>
@@ -43,7 +34,7 @@
                         <div class="w-[6.75rem] mt-10 pl-3">
                             <hr width="90%"/>
                         </div>
-                        {% for day in calendar.Calendar().itermonthdays(year, month_num) %}
+                        {% for day in calendar.Calendar().itermonthdays(year, _month_num) %}
                            {% if day != 0 %}
                                <img src="../src/icons/star.svg" class="py-[1rem] dark:invert" width="30px"/>
                            {% endif %}

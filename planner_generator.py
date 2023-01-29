@@ -5,7 +5,7 @@ import os
 from datetime import timedelta
 from os.path import abspath
 
-from jinja2 import Environment, FileSystemLoader
+from jinja2 import Environment, FileSystemLoader, ext
 from playwright.async_api import async_playwright
 
 
@@ -15,7 +15,8 @@ class PlannerBuilder:
         self.pages: dict[str, str] = dict()
         self.j2_env = Environment(loader=FileSystemLoader(os.path.join(os.path.dirname(__file__), templates_path)),
                                   autoescape=True,
-                                  enable_async=True)
+                                  enable_async=True,
+                                  extensions=[ext.loopcontrols])
 
     async def build_planner(self) -> str:
         return await self.j2_env.get_template('full_planner.html').render_async(pages=self.pages.values())

@@ -26,7 +26,7 @@
                 <div class="flex h-[6.7rem] m-1">
                     {% set week_num = week[0].isocalendar().week %}
                     <div class="w-[3rem] text-md {{ "opacity-50" if week[0].year != week[-1].year }}">
-                        <p class="w-[5rem] -rotate-90 pb-10 pr-3">
+                        <p class="w-[5rem] -rotate-90 pb-10 pr-2">
                             <a href="#{{ week[0].year if week[-1].year != (year + 1) else week[-1].year }}-{{ 'W%02d' % week_num }}">
                                 Week {{ week_num }}
                             </a>
