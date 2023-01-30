@@ -1,9 +1,0 @@
-remote_theme: pages-themes/cayman@v0.2.0
-plugins:
-- jekyll-remote-theme
-description: A free digital planner, that helps you achieve your goals
-show_downloads: true
-
-github:
-  light_url: https://github.com/vad-ii-k/PDF-planner/raw/master/planners/planner-2023-light.pdf
-  dark_url: https://github.com/vad-ii-k/PDF-planner/raw/master/planners/planner-2023-dark.pdf
