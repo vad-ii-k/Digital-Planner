@@ -43,11 +43,11 @@
 .hero-media-illustration {
 	position: absolute;
     top: -10%;
-    left: -15px;
+	left: 10%;
 
 	img,
 	svg {
-		max-width: 136%;
+		max-width: 120%;
 	}
 }
 
@@ -57,13 +57,8 @@
 
 .hero-media-image {
 	margin: 0 auto;
-	box-shadow: 48px 16px 48px rgba(color(bg, 1i), .12);
 	border-radius: 4px;
 	transform: perspective(1000px) rotateY(16deg) rotateX(2deg) rotateZ(-7deg) scaleY(.95) translatex(2%);
-
-	.lights-off & {
-		box-shadow: 48px 16px 48px rgba(darken(color(bg, 1i), 35%), .2);
-	}
 }
 
 @include media( '<medium' ) {
@@ -144,9 +139,9 @@
 	.header-illustration-image {
 		display: block;
 		position: absolute;
-		top: -168px;
-		left: -722px;
-		width: 1440px;
-		height: 324px;
+		top: -175px;
+		left: -710px;
+		width: 1500px;
+		height: 350px;
 	}
 }

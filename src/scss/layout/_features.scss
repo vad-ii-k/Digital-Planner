@@ -1,5 +1,5 @@
 .features-wrap {
-	max-width: 540px;
+	max-width: 900px;
 	margin: 0 auto;
 }
 
@@ -19,12 +19,7 @@
 
 .features-box {
 	margin: 0 auto;
-	box-shadow: 48px 16px 48px rgba(color(typography, 1), .12);
 	transform: perspective(1000px) rotateY(10deg) translateY(2%);
-
-	.lights-off & {
-		box-shadow: 48px 16px 48px rgba(darken(color(bg, 1i), 35%), .2);
-	}
 }
 
 .feature {
@@ -37,12 +32,12 @@
 }
 
 .feature-icon {
-	display: inline-flex;
+	position: relative;
 	margin-bottom: 16px;
 
 	img,
 	svg {
-		max-width: none;
+		max-width: 350px;
 	}
 }
 
@@ -82,20 +77,24 @@
 		&::before {
 			content: '';
 			width: 100%;
-		    height: 300px;
+		    height: 450px;
 		    position: absolute;
 		    left: 0;
 		    top: 168px;
 		    background: linear-gradient(to bottom, rgba(color(primary, 1), 0), rgba(color(primary, 1), .04));
 
 			.lights-off & {
-				display: none;
+				background: linear-gradient(to bottom, rgba(color(primary, 1), 0), rgba(color(primary, 1), .04));
 			}
 		}
 	}
 
 	.feature {
 		text-align: left;
+
+		.text-sm {
+			text-indent: 10px;
+		}
 	}
 
 	.feature-inner {
@@ -104,9 +103,13 @@
 
 	.feature-icon {
 		display: block;
-		margin-top: 8px;
-		margin-right: 32px;
+		margin-right: 10px;
 		margin-bottom: 0;
+
+		img,
+		svg {
+			max-width: 600px;
+		}
 	}
 
 	.feature-title {

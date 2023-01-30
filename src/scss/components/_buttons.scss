@@ -82,6 +82,7 @@
 .button-primary {
 	color: color(typography, 1i) !important;
 	background-color: color(primary, 1);
+    border-radius: 20px;
 
     &:hover {
         background: lighten(color(primary, 1), 1%);
