@@ -17,7 +17,7 @@
             ) }}
         </div>
         <div class="content-box text-md">
-            <div class="ml-[6.75rem] flex justify-around mb-2">
+            <div class="ml-[9rem] flex justify-around mb-2">
                {% for day in calendar.Calendar().itermonthdays(year, _month_num) %}
                    {% if day != 0 %}
                        <div class="w-[1.5rem] text-center">
@@ -29,9 +29,9 @@
                 {% endfor %}
             </div>
             {% for _ in range(7) %}
-                <div class="h-[4rem] {{ "bg-indigo-50 dark:bg-neutral-800" if loop.index0 % 2 == 0 }} rounded-xl">
+                <div class="h-[4rem] {{ "bg-indigo-50 dark:bg-indigo-900" if loop.index0 % 2 == 0 }} rounded-xl">
                     <div class="flex justify-around">
-                        <div class="w-[6.75rem] mt-10 pl-3">
+                        <div class="w-[9rem] mt-10 pl-3">
                             <hr width="90%"/>
                         </div>
                         {% for day in calendar.Calendar().itermonthdays(year, _month_num) %}
