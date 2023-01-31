@@ -24,19 +24,19 @@
                             ('%02d-%02d-%d' % (next_date.day, next_date.month, next_date.year))
                     ) }}
                 </div>
-                <div class="grid grid-cols-2 gap-2 text-md font-semibold">
+                <div class="grid grid-cols-3 gap-2 text-md font-semibold">
                     <div class="content-box">
                         Daily plan
                         <div class="grid divide-y divide-slate-300 divide-dashed">
                             {% for hour in range(7, 22) -%}
                                 <div class="py-[0.57rem]">
-                                    <p class="w-[3rem] text-right font-medium text-md text-slate-500">{{ hour }}:00</p>
+                                    <p class="w-[3rem] text-right font-medium text-md opacity-50">{{ hour }}:00</p>
                                 </div>
                             {% endfor %}
                             <div></div>
                         </div>
                     </div>
-                    <div class="grid gap-y-2">
+                    <div class="grid gap-y-2 col-span-2">
                         <div class="h-[6rem] content-box">Daily main focus</div>
                         <div class="h-[24rem] content-box">
                             Tasks
@@ -59,7 +59,39 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="h-[12.5rem] content-box">Notes</div>
+                        <div class="grid grid-cols-3 gap-2">
+                            <div class="h-[12.5rem] content-box col-span-2">Notes</div>
+                            <div class="content-box font-normal text-center">
+                                <a href="#{{ year }}-{{ '%02d' % month_num }}">
+                                    <div class="text-md mb-1">{{ month_name }}</div>
+                                </a>
+                                <div class="grid grid-cols-8 gap-1 text-slate-500 text-xs mb-1">
+                                    <div></div>
+                                    {% for abbr in calendar.day_abbr -%}
+                                        <div>{{ abbr }}</div>
+                                    {% endfor -%}
+                                </div>
+                                <div class="grid grid-cols-8 gap-1 text-sm">
+                                    {% for cal_week in calendar.Calendar().monthdatescalendar(year, month_num) -%}
+                                        <div class="font-medium text-indigo-500 dark:text-indigo-400 {{ "opacity-50" if cal_week[0].year != cal_week[-1].year }}">
+                                            {% set week_num = cal_week[0].isocalendar().week %}
+                                            <a href="#{{ (cal_week[0].year if cal_week[-1].year != (year + 1) else cal_week[-1].year) ~ '-' ~ ('W%02d' % week_num) }}">
+                                                {{ cal_week[0].isocalendar().week }}
+                                            </a>
+                                        </div>
+                                        {% for cal_date in cal_week -%}
+                                            <div class="{{ "opacity-50" if cal_date.month != month_num }}">
+                                                <a href="#{{ ('%02d-%02d-%d' % (cal_date.day, cal_date.month, cal_date.year)) }}">
+                                                    <p class="{{ "rounded-full bg-indigo-200 dark:bg-indigo-900" if (cal_date.day == date.day and cal_date.month == month_num) }}">
+                                                        {{ cal_date.day }}
+                                                    </p>
+                                                </a>
+                                            </div>
+                                        {% endfor -%}
+                                    {% endfor -%}
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 {% set curr_template = "calendar" %}
