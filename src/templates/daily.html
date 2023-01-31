@@ -5,13 +5,14 @@
     {% for week in calendar.Calendar().monthdatescalendar(year, month_num) -%}
         {% set weeks_loop = loop %}
         {% for date in week -%}
+            {% if date.month != month_num %}{% continue %}{% endif %}
             {% set id = ('%02d-%02d-%d' % (date.day, date.month, date.year)) %}
             {% include 'page_header.html' %}
             <div class="h-full content-around p-3">
                 <div class="flex justify-between mb-1">
                     {{ cph.calendar_page_header([
-                            week[0].year,
-                            calendar.month_name[week[0].month],
+                            date.year,
+                            calendar.month_name[date.month],
                             date.day ~ " " ~ calendar.day_name[loop.index0]
                     ]) }}
                     {% set prev_date = date - timedelta(days=1) %}
