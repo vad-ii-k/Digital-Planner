@@ -17,10 +17,10 @@
   function revealAnimations () {
     sr.reveal('.feature', {
       duration: 700,
-      distance: '20%',
+      distance: '10%',
       easing: 'cubic-bezier(0.215, 0.61, 0.355, 1)',
       origin: 'right',
-      viewFactor: 0.2
+      viewFactor: 0.1
     })
   }
 
@@ -66,6 +66,5 @@
         downloadButton.innerHTML = 'Download dark'
       }
     }
-    revealAnimations()
   }
 }())
