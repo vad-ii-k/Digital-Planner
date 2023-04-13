@@ -1,19 +1,19 @@
 {% set id = "inbox" %}
 {% include 'page_header.html' %}
 <div class="content-around p-3">
-    <p class="pl-1 color-header">Someday</p>
+    <p class="pl-1 color-header">Un autre jour</p>
     <div class="grid grid-cols-3 gap-2 place-content-stretch text-md font-semibold h-2/3 p-1">
         {% for _ in range(9) -%}
             <div class="content-box h-[14rem] w-[22rem]">
-                <p>Backlog card</p>
+                <p>Tâches de réserve</p>
                 <div class="h-5/6 grid divide-y divide-slate-300 divide-dashed font-medium text-sm text-slate-500 p-1">
                     <div class="flex justify-between h-[3rem]">
                         <img src="../src/icons/check-circle.svg" class="dark:invert" width="25px"/>
-                        <p class="flex items-center">Task</p>
+                        <p class="flex items-center">Tâche</p>
                     </div>
                     <div class="flex justify-between h-[5rem]">
                         <img src="../src/icons/information-circle.svg" class="dark:invert" width="25px"/>
-                        <p class="flex items-center">Details</p>
+                        <p class="flex items-center">Détails</p>
                     </div>
                     <div class="flex justify-between h-[3rem]">
                         <img src="../src/icons/flag.svg" class="dark:invert" width="25px"/>

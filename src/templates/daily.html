@@ -26,7 +26,7 @@
                 </div>
                 <div class="grid grid-cols-3 gap-2 text-md font-semibold">
                     <div class="content-box">
-                        Daily plan
+                        Organisation du jour
                         <div class="grid divide-y divide-slate-300 divide-dashed">
                             {% for hour in range(7, 22) -%}
                                 <div class="py-[0.57rem]">
@@ -37,9 +37,9 @@
                         </div>
                     </div>
                     <div class="grid gap-y-2 col-span-2">
-                        <div class="h-[6rem] content-box">Daily main focus</div>
+                        <div class="h-[6rem] content-box">Important</div>
                         <div class="h-[24rem] content-box">
-                            Tasks
+                            Tâches
                             <div class="grid grid-cols-2 gap-2">
                                 {% for _ in range(2) -%}
                                     <div class="h-5/6 grid divide-y divide-slate-300 divide-dashed">
@@ -52,7 +52,7 @@
                                     </div>
                                 {% endfor %}
                                 <div class="col-span-2 flex justify-end gap-2 h-[1.5rem]">
-                                    <p class="flex items-center font-medium text-sm text-slate-500">Not today? Add to Someday</p>
+                                    <p class="flex items-center font-medium text-sm text-slate-500">Pas aujourd'hui ? Ajouter à un jour peut-être</p>
                                     <a href="#inbox">
                                         <img src="../src/icons/plus-circle.svg" width="25px"/>
                                     </a>
