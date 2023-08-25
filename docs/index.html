@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>GoodNotes Planner</title>
+    <link href="https://fonts.googleapis.com/css?family=Heebo:400,700|IBM+Plex+Sans:600" rel="stylesheet">
+    <link rel="stylesheet" href="dist/css/style.css">
+    <link rel="icon" type="image/png" href="dist/images/icon.png">
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <script>
+        ScrollReveal({ reset: true });
+    </script>
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript" >
+        (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+            m[i].l=1*new Date();
+            for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+            k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+        (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+        ym(93144036, "init", {
+            clickmap:true,
+            trackLinks:true,
+            accurateTrackBounce:true
+        });
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/93144036" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <!-- /Yandex.Metrika counter -->
+</head>
+<body class="is-boxed has-animations">
+    <div class="body-wrap boxed-container">
+        <header class="site-header">
+            <a target="_blank" href="https://github.com/vad-ii-k/PDF-planner" class="github-corner asset-dark" aria-label="View source on GitHub" title="View source on GitHub">
+                <svg width="120" height="120" viewBox="0 0 250 250" style="fill:#535FD7; color:#182538; position: absolute; top: 0; border: 0; left: 0;">
+                    <path d="M 250,0 C 161.77265,85.894309 87.828547,162.17145 0,250 V 0 Z" class="octo-background"></path>
+                    <path fill="currentColor" class="octo-body" d="m 71.002213,54.99879 c -4,2 -7.999513,5.002687 -11.999513,9.002687 -4,4 -7.002684,7.99951 -9.002684,11.99951 -14,4.000003 -16.998291,8.996584 -16.998291,8.996584 4,8 8.998534,11.004638 10.998534,11.004638 0,6.000001 2.000735,10.997321 7.000732,15.997321 16.000003,16 29.997315,10.00195 40.997315,2.00195 0,3 0.998782,6.99854 4.998779,10.99854 l 12.005615,10.99853 c 1,2 -1.00097,5.99976 -1.00097,5.99976 l 26.99585,-26.99585 c 0,0 -3.99878,2 -4.99878,0 l -14.00147,-14.00147 c -3,-2.000003 -5.9956,-3.002931 -7.9956,-3.002931 8,-11 14.99804,-23.997316 -2.00195,-40.997316 -5.00001,-5 -9.997324,-7.000731 -15.997324,-7.000731 -9.74434,0.903981 -14.230117,2.806088 -19.000243,4.998778 z"></path>
+                    <path fill="currentColor" class="octo-arm" d="m 101.55303,128.29138 c -9.000003,15 -19.000004,9 -19.000004,9 -7,-3 -11,-2 -11,-2 -7.000002,1 -1.999998,-3 -1.999998,-3 4.999996,-4.00001 11,-2 11,-2 10.000001,3 15.000001,-5 16.000001,-9" style="transform-origin: 110px 120px;"></path>
+                    <path fill="currentColor" d="m 77.06046,38.961705 c 0,0 -5.000734,2.997313 -7.000734,15.997313 -0.02844,0.01437 0.01427,-0.0072 0,0 -0.01427,0.0072 0.468872,3.99055 0.468872,3.99055 L 90.326149,53.502673 89.041673,49.929736 C 88.037671,47.914124 86.024988,42.945949 77.060474,38.961721 Z" style="transform-origin: 100px 80px;"></path>
+                    <path fill="#535FD7" class="octo-face" d="m 66.316586,91.684167 c -3.732719,3.695302 -5.499914,7.911113 -5.109057,12.189823 0.402191,4.40252 2.856545,7.13979 3.598819,7.87463 7.147689,7.07602 16.6566,5.83073 26.774601,-3.5071 1.898425,-1.74974 3.88999,-3.6547 5.918691,-5.66307 2.008923,-1.98876 3.97015,-3.993798 5.8295,-5.960792 11.03287,-11.661932 7.51635,-19.883384 2.62392,-24.726418 -4.74759,-4.699985 -12.64784,-6.925112 -20.588233,0.935666 -0.195089,0.193132 -0.479788,0.515601 -1.17978,1.318428 -1.495895,1.714736 -4.280356,4.904844 -7.250493,7.845202 -3.280289,3.247391 -6.797215,6.325174 -8.899525,8.162522 -0.980686,0.857626 -1.464135,1.279345 -1.718443,1.531102 z"></path>
+                    <path fill="currentColor" d="m 95.485225,97.428842 c -0.167852,0.167851 -0.167673,0.439893 0,0.607564 0.669254,0.669256 0.630878,2.203944 -0.421781,3.256604 -0.151892,0.15189 -0.314722,0.28137 -0.484546,0.39094 -0.424651,0.27437 -0.891264,0.42501 -1.329543,0.49172 -0.08769,0.0135 -0.174308,0.0233 -0.25913,0.0303 -0.254468,0.021 -0.493513,0.0144 -0.702251,-0.0111 -0.347539,-0.0423 -0.610435,-0.13665 -0.717494,-0.24371 -0.167673,-0.16767 -0.439714,-0.16785 -0.607566,0 -0.167851,0.16785 -0.167672,0.43989 0,0.60756 0.08662,0.0866 0.201028,0.16552 0.337676,0.23439 0.205152,0.10293 0.460875,0.18327 0.749235,0.23241 0.288361,0.0491 0.609538,0.0669 0.94578,0.0456 0.336062,-0.0215 0.687367,-0.0827 1.036161,-0.19117 0.435768,-0.13593 0.867413,-0.34628 1.260501,-0.6472 0.13091,-0.10042 0.257695,-0.21071 0.378742,-0.33175 0.630878,-0.63088 0.973575,-1.38245 1.079738,-2.108367 0.01506,-0.103652 0.02546,-0.206945 0.03102,-0.308983 0.01112,-0.204435 0.0038,-0.405104 -0.02134,-0.598779 -0.06276,-0.483828 -0.2351,-0.922646 -0.498713,-1.26337 -0.05272,-0.06815 -0.109032,-0.132345 -0.168928,-0.19224 -0.167851,-0.168211 -0.439893,-0.168031 -0.607565,-3.59e-4 z"></path>
+                    <path fill="currentColor" d="m 90.814968,98.84751 c 0.186502,0.03622 0.378742,0.03622 0.565244,0 0.06994,-0.01363 0.139159,-0.03228 0.206945,-0.05595 0.135573,-0.04734 0.265586,-0.114949 0.385378,-0.20318 0.05989,-0.04411 0.117281,-0.09325 0.171438,-0.147408 0.216629,-0.216629 0.352201,-0.483829 0.406179,-0.763761 0.0226,-0.116564 0.0312,-0.235279 0.02547,-0.353635 -0.0079,-0.164625 -0.05326,-0.325124 -0.116026,-0.480423 -0.07227,-0.17879 -0.170721,-0.349689 -0.315797,-0.494767 -0.577797,-0.577797 -1.51479,-0.577977 -2.092587,-1.8e-4 -0.288898,0.2889 -0.433258,0.667463 -0.433078,1.046384 0,0.0165 0.0041,0.03282 0.0047,0.04949 0.0038,0.111363 0.02224,0.221291 0.05093,0.329606 0.04035,0.151891 0.09899,0.299837 0.188296,0.435051 0.05416,0.08213 0.11746,0.159782 0.189729,0.232052 0.07227,0.07227 0.150098,0.135393 0.232052,0.189729 0.163906,0.108673 0.344669,0.180764 0.531171,0.216988 z"></path>
+                    <path fill="currentColor" d="m 72.095924,95.622822 c -0.477552,-0.04932 -0.942372,-0.05111 -1.387107,-0.0041 -0.444735,0.04698 -0.869744,0.142387 -1.266957,0.28818 -0.397213,0.145796 -0.767706,0.341622 -1.103409,0.589095 -0.167852,0.123738 -0.327096,0.260385 -0.476835,0.410125 -2.395114,2.395114 -1.443237,7.230167 2.12612,10.799527 3.569358,3.56935 7.999494,4.11631 10.394607,1.72119 0.14974,-0.14974 0.288002,-0.30737 0.414608,-0.47235 0.253392,-0.32978 0.460696,-0.68844 0.621912,-1.07059 0.161037,-0.38197 0.276166,-0.78725 0.34467,-1.21047 0.0685,-0.42286 0.09074,-0.86365 0.06653,-1.31645 -0.02439,-0.45263 -0.09522,-0.91727 -0.212684,-1.38836 -0.411201,-1.64857 -1.39446,-3.37497 -2.956054,-4.936556 -1.561594,-1.561594 -3.365461,-2.622323 -5.101363,-3.120857 -0.496023,-0.142745 -0.986487,-0.239045 -1.464039,-0.28836 z"></path>
+                    <path fill="currentColor" d="m 91.300052,73.466945 c -2.395114,2.395114 -1.443237,7.230173 2.126121,10.799531 3.569358,3.569358 7.999317,4.11649 10.394607,1.721197 2.3953,-2.395293 1.84817,-6.825249 -1.72119,-10.394607 -3.569365,-3.569358 -8.404245,-4.521414 -10.799538,-2.126121 z" style="transform-origin: 100px 80px;"></path>
+                </svg>
+            </a>
+            <a target="_blank" href="https://github.com/vad-ii-k/PDF-planner" class="github-corner asset-light" aria-label="View source on GitHub" title="View source on GitHub">
+                <svg width="120" height="120" viewBox="0 0 250 250" style="fill:#535FD7; color:#fff; position: absolute; top: 0; border: 0; left: 0;">
+                    <path d="M 250,0 C 161.77265,85.894309 87.828547,162.17145 0,250 V 0 Z" class="octo-background"></path>
+                    <path fill="currentColor" class="octo-body" d="m 71.002213,54.99879 c -4,2 -7.999513,5.002687 -11.999513,9.002687 -4,4 -7.002684,7.99951 -9.002684,11.99951 -14,4.000003 -16.998291,8.996584 -16.998291,8.996584 4,8 8.998534,11.004638 10.998534,11.004638 0,6.000001 2.000735,10.997321 7.000732,15.997321 16.000003,16 29.997315,10.00195 40.997315,2.00195 0,3 0.998782,6.99854 4.998779,10.99854 l 12.005615,10.99853 c 1,2 -1.00097,5.99976 -1.00097,5.99976 l 26.99585,-26.99585 c 0,0 -3.99878,2 -4.99878,0 l -14.00147,-14.00147 c -3,-2.000003 -5.9956,-3.002931 -7.9956,-3.002931 8,-11 14.99804,-23.997316 -2.00195,-40.997316 -5.00001,-5 -9.997324,-7.000731 -15.997324,-7.000731 -9.74434,0.903981 -14.230117,2.806088 -19.000243,4.998778 z"></path>
+                    <path fill="currentColor" class="octo-arm" d="m 101.55303,128.29138 c -9.000003,15 -19.000004,9 -19.000004,9 -7,-3 -11,-2 -11,-2 -7.000002,1 -1.999998,-3 -1.999998,-3 4.999996,-4.00001 11,-2 11,-2 10.000001,3 15.000001,-5 16.000001,-9" style="transform-origin: 110px 120px;"></path>
+                    <path fill="currentColor" d="m 77.06046,38.961705 c 0,0 -5.000734,2.997313 -7.000734,15.997313 -0.02844,0.01437 0.01427,-0.0072 0,0 -0.01427,0.0072 0.468872,3.99055 0.468872,3.99055 L 90.326149,53.502673 89.041673,49.929736 C 88.037671,47.914124 86.024988,42.945949 77.060474,38.961721 Z" style="transform-origin: 100px 80px;"></path>
+                    <path fill="#535FD7" class="octo-face" d="m 66.316586,91.684167 c -3.732719,3.695302 -5.499914,7.911113 -5.109057,12.189823 0.402191,4.40252 2.856545,7.13979 3.598819,7.87463 7.147689,7.07602 16.6566,5.83073 26.774601,-3.5071 1.898425,-1.74974 3.88999,-3.6547 5.918691,-5.66307 2.008923,-1.98876 3.97015,-3.993798 5.8295,-5.960792 11.03287,-11.661932 7.51635,-19.883384 2.62392,-24.726418 -4.74759,-4.699985 -12.64784,-6.925112 -20.588233,0.935666 -0.195089,0.193132 -0.479788,0.515601 -1.17978,1.318428 -1.495895,1.714736 -4.280356,4.904844 -7.250493,7.845202 -3.280289,3.247391 -6.797215,6.325174 -8.899525,8.162522 -0.980686,0.857626 -1.464135,1.279345 -1.718443,1.531102 z"></path>
+                    <path fill="currentColor" d="m 95.485225,97.428842 c -0.167852,0.167851 -0.167673,0.439893 0,0.607564 0.669254,0.669256 0.630878,2.203944 -0.421781,3.256604 -0.151892,0.15189 -0.314722,0.28137 -0.484546,0.39094 -0.424651,0.27437 -0.891264,0.42501 -1.329543,0.49172 -0.08769,0.0135 -0.174308,0.0233 -0.25913,0.0303 -0.254468,0.021 -0.493513,0.0144 -0.702251,-0.0111 -0.347539,-0.0423 -0.610435,-0.13665 -0.717494,-0.24371 -0.167673,-0.16767 -0.439714,-0.16785 -0.607566,0 -0.167851,0.16785 -0.167672,0.43989 0,0.60756 0.08662,0.0866 0.201028,0.16552 0.337676,0.23439 0.205152,0.10293 0.460875,0.18327 0.749235,0.23241 0.288361,0.0491 0.609538,0.0669 0.94578,0.0456 0.336062,-0.0215 0.687367,-0.0827 1.036161,-0.19117 0.435768,-0.13593 0.867413,-0.34628 1.260501,-0.6472 0.13091,-0.10042 0.257695,-0.21071 0.378742,-0.33175 0.630878,-0.63088 0.973575,-1.38245 1.079738,-2.108367 0.01506,-0.103652 0.02546,-0.206945 0.03102,-0.308983 0.01112,-0.204435 0.0038,-0.405104 -0.02134,-0.598779 -0.06276,-0.483828 -0.2351,-0.922646 -0.498713,-1.26337 -0.05272,-0.06815 -0.109032,-0.132345 -0.168928,-0.19224 -0.167851,-0.168211 -0.439893,-0.168031 -0.607565,-3.59e-4 z"></path>
+                    <path fill="currentColor" d="m 90.814968,98.84751 c 0.186502,0.03622 0.378742,0.03622 0.565244,0 0.06994,-0.01363 0.139159,-0.03228 0.206945,-0.05595 0.135573,-0.04734 0.265586,-0.114949 0.385378,-0.20318 0.05989,-0.04411 0.117281,-0.09325 0.171438,-0.147408 0.216629,-0.216629 0.352201,-0.483829 0.406179,-0.763761 0.0226,-0.116564 0.0312,-0.235279 0.02547,-0.353635 -0.0079,-0.164625 -0.05326,-0.325124 -0.116026,-0.480423 -0.07227,-0.17879 -0.170721,-0.349689 -0.315797,-0.494767 -0.577797,-0.577797 -1.51479,-0.577977 -2.092587,-1.8e-4 -0.288898,0.2889 -0.433258,0.667463 -0.433078,1.046384 0,0.0165 0.0041,0.03282 0.0047,0.04949 0.0038,0.111363 0.02224,0.221291 0.05093,0.329606 0.04035,0.151891 0.09899,0.299837 0.188296,0.435051 0.05416,0.08213 0.11746,0.159782 0.189729,0.232052 0.07227,0.07227 0.150098,0.135393 0.232052,0.189729 0.163906,0.108673 0.344669,0.180764 0.531171,0.216988 z"></path>
+                    <path fill="currentColor" d="m 72.095924,95.622822 c -0.477552,-0.04932 -0.942372,-0.05111 -1.387107,-0.0041 -0.444735,0.04698 -0.869744,0.142387 -1.266957,0.28818 -0.397213,0.145796 -0.767706,0.341622 -1.103409,0.589095 -0.167852,0.123738 -0.327096,0.260385 -0.476835,0.410125 -2.395114,2.395114 -1.443237,7.230167 2.12612,10.799527 3.569358,3.56935 7.999494,4.11631 10.394607,1.72119 0.14974,-0.14974 0.288002,-0.30737 0.414608,-0.47235 0.253392,-0.32978 0.460696,-0.68844 0.621912,-1.07059 0.161037,-0.38197 0.276166,-0.78725 0.34467,-1.21047 0.0685,-0.42286 0.09074,-0.86365 0.06653,-1.31645 -0.02439,-0.45263 -0.09522,-0.91727 -0.212684,-1.38836 -0.411201,-1.64857 -1.39446,-3.37497 -2.956054,-4.936556 -1.561594,-1.561594 -3.365461,-2.622323 -5.101363,-3.120857 -0.496023,-0.142745 -0.986487,-0.239045 -1.464039,-0.28836 z"></path>
+                    <path fill="currentColor" d="m 91.300052,73.466945 c -2.395114,2.395114 -1.443237,7.230173 2.126121,10.799531 3.569358,3.569358 7.999317,4.11649 10.394607,1.721197 2.3953,-2.395293 1.84817,-6.825249 -1.72119,-10.394607 -3.569365,-3.569358 -8.404245,-4.521414 -10.799538,-2.126121 z" style="transform-origin: 100px 80px;"></path>
+                </svg>
+            </a>
+
+            <div class="container">
+                <div class="site-header-inner">
+                    <div class="brand header-brand">
+
+                    </div>
+                    <div class="asset-light">
+                        <a class="github-button" href="https://github.com/vad-ii-k/PDF-planner" data-color-scheme="light" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star vad-ii-k/PDF-planner on GitHub">Star</a>
+                    </div>
+                    <div class="asset-dark">
+                        <a class="github-button" href="https://github.com/vad-ii-k/PDF-planner" data-color-scheme="dark" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star vad-ii-k/PDF-planner on GitHub">Star</a>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <section class="hero">
+                <div class="container">
+                    <div class="hero-inner">
+						<div class="hero-copy">
+	                        <h1 class="hero-title mt-0">GoodNotes Planner 2023</h1>
+	                        <p class="hero-paragraph">A free digital planner,<br>that helps you achieve your goals</p>
+	                        <div class="hero-cta">
+								<a id="download-button" class="button button-primary">Download light</a>
+								<div class="lights-toggle">
+									<input id="lights-toggle" type="checkbox" name="lights-toggle" class="switch" checked="checked">
+									<label for="lights-toggle" class="text-xs"><span>Turn me <span class="label-text">dark</span></span></label>
+								</div>
+							</div>
+						</div>
+						<div class="hero-media">
+							<div class="header-illustration">
+								<img class="header-illustration-image asset-light" src="dist/images/header-illustration-light.svg" alt="Header illustration">
+								<img class="header-illustration-image asset-dark" src="dist/images/header-illustration-dark.svg" alt="Header illustration">
+							</div>
+							<div class="hero-media-illustration">
+								<img class="hero-media-illustration-image asset-light" src="dist/images/hero-media-illustration-light.svg" alt="Hero media illustration">
+								<img class="hero-media-illustration-image asset-dark" src="dist/images/hero-media-illustration-dark.svg" alt="Hero media illustration">
+							</div>
+							<div class="hero-media-container">
+								<img class="hero-media-image asset-light" src="dist/images/hero-media-light.png" width="600px" alt="Hero media">
+								<img class="hero-media-image asset-dark" src="dist/images/hero-media-dark.png" width="600px" alt="Hero media">
+							</div>
+						</div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="features section">
+                <div class="container">
+					<div class="features-inner section-inner has-bottom-divider">
+						<div class="features-header text-center">
+							<div class="container-sm">
+								<h2 class="section-title mt-0">Digital Planner for PDF annotation apps</h2>
+	                            <p class="section-paragraph">
+                                    It includes dated yearly, monthly, weekly, daily and other planning pages interlinked with over 20000 hyperlinks,
+                                    enabling you quick access to any related section in only one click!
+                                </p>
+								<div class="features-image">
+									<img class="features-illustration asset-dark" src="dist/images/features-illustration-dark.svg" alt="Feature illustration">
+									<img class="features-box asset-dark" src="dist/images/features-box-dark.png" alt="Feature illustration top">
+                                    <img class="features-illustration asset-dark" src="dist/images/features-illustration-top-dark.svg" style="left: 27%; top: 22%" alt="Feature illustration">
+
+                                    <img class="features-illustration asset-light" src="dist/images/features-illustration-light.svg" alt="Feature illustration">
+                                    <img class="features-box asset-light" src="dist/images/features-box-light.png" alt="Feature box">
+                                    <img class="features-illustration asset-light" src="dist/images/features-illustration-top-light.svg" style="left: 27%; top: 22%" alt="Feature illustration top">
+								</div>
+							</div>
+                        </div>
+                        <div class="features-wrap">
+                            <div class="feature is-revealing">
+                                <div class="feature-inner">
+                                    <div class="feature-icon">
+                                        <img class="asset-light" src="dist/images/feature-01-light.png" alt="Feature 01">
+                                        <img class="asset-dark" src="dist/images/feature-01-dark.png" alt="Feature 01">
+                                    </div>
+                                    <div class="feature-content">
+                                        <h3 class="feature-title mt-0">2023 Calendar</h3>
+                                        <p class="text-sm mb-0">
+                                            Contains links to any month, week and day of the year.
+                                            You can return to it using the 1st button of the lower navigation menu.
+                                        </p>
+                                    </div>
+								</div>
+                            </div>
+							<div class="feature is-revealing">
+                                <div class="feature-inner">
+                                    <div class="feature-icon">
+                                        <img class="asset-light" src="dist/images/feature-02-light.png" alt="Feature 02">
+                                        <img class="asset-dark" src="dist/images/feature-02-dark.png" alt="Feature 02">
+                                    </div>
+                                    <div class="feature-content">
+                                        <h3 class="feature-title mt-0">Monthly Calendar</h3>
+                                        <p class="text-sm mb-0">
+                                            Contains links to any week and day of the month, as well as to the previous and next months.
+                                        </p>
+                                    </div>
+								</div>
+                            </div>
+                            <div class="feature is-revealing">
+                                <div class="feature-inner">
+                                    <div class="feature-icon">
+										<img class="asset-light" src="dist/images/feature-03-light.png" alt="Feature 03">
+										<img class="asset-dark" src="dist/images/feature-03-dark.png" alt="Feature 03">
+                                    </div>
+									<div class="feature-content">
+                                    	<h3 class="feature-title mt-0">Weekly Planner</h3>
+                                    	<p class="text-sm mb-0">
+                                            Contains links to any day of the week, as well as to the previous and next weeks.
+                                        </p>
+									</div>
+								</div>
+                            </div>
+							<div class="feature is-revealing">
+                                <div class="feature-inner">
+                                    <div class="feature-icon">
+                                        <img class="asset-light" src="dist/images/feature-04-light.png" alt="Feature 04">
+                                        <img class="asset-dark" src="dist/images/feature-04-dark.png" alt="Feature 04">
+                                    </div>
+                                    <div class="feature-content">
+                                        <h3 class="feature-title mt-0">Daily Planner</h3>
+                                        <p class="text-sm mb-0">
+                                            Contains links to any week and day of the month, as well as an additional link to the incoming tasks page (Inbox).
+                                        </p>
+                                    </div>
+								</div>
+                            </div>
+                            <div class="feature is-revealing">
+                                <div class="feature-inner">
+                                    <div class="feature-icon">
+										<img class="asset-light" src="dist/images/feature-05-light.png" alt="Feature 05">
+										<img class="asset-dark" src="dist/images/feature-05-dark.png" alt="Feature 05">
+                                    </div>
+									<div class="feature-content">
+                                    	<h3 class="feature-title mt-0">Inbox</h3>
+                                    	<p class="text-sm mb-0">
+                                            A page for postponed tasks.
+                                            You can switch to it by clicking the 2nd menu button.
+                                        </p>
+									</div>
+								</div>
+                            </div>
+							<div class="feature is-revealing">
+                                <div class="feature-inner">
+                                    <div class="feature-icon">
+                                        <img class="asset-light" src="dist/images/feature-06-light.png" alt="Feature 06">
+                                        <img class="asset-dark" src="dist/images/feature-06-dark.png" alt="Feature 06">
+                                    </div>
+                                    <div class="feature-content">
+                                        <h3 class="feature-title mt-0">Projects Overview</h3>
+                                        <p class="text-sm mb-0">
+                                            Contains links to the project details pages (Project Planner).
+                                            You can open this template by clicking the 3rd menu button.
+                                        </p>
+                                    </div>
+								</div>
+                            </div>
+                            <div class="feature is-revealing">
+                                <div class="feature-inner">
+                                    <div class="feature-icon">
+                                        <img class="asset-light" src="dist/images/feature-07-light.png" alt="Feature 07">
+                                        <img class="asset-dark" src="dist/images/feature-07-dark.png" alt="Feature 07">
+                                    </div>
+                                    <div class="feature-content">
+                                        <h3 class="feature-title mt-0">Project Planner</h3>
+                                        <p class="text-sm mb-0">
+                                            Contains buttons for switching between projects.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="feature is-revealing">
+                                <div class="feature-inner">
+                                    <div class="feature-icon">
+                                        <img class="asset-light" src="dist/images/feature-08-light.png" alt="Feature 08">
+                                        <img class="asset-dark" src="dist/images/feature-08-dark.png" alt="Feature 08">
+                                    </div>
+                                    <div class="feature-content">
+                                        <h3 class="feature-title mt-0">Habits Tracker</h3>
+                                        <p class="text-sm mb-0">
+                                            Contains links to any day of the month, as well as buttons for switching between the habits trackers of the previous and next months.
+                                        </p>
+                                        <p class="text-sm mb-0">
+                                            Switching to this template is carried out using the 4th menu button, the month of the tracker is determined depending on the page opened at the time of clicking.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+			<section class="cta section">
+                <div class="container-sm">
+                    <div class="cta-inner section-inner">
+                        <div class="cta-header text-center">
+                            <h2 class="section-title mt-0">Start Planning Your Year Today</h2>
+                            <p class="section-paragraph">Take your digital planning to the next level with any of these personal planners.</p>
+							<div class="cta-cta">
+                                <a class="button button-primary" href="https://github.com/vad-ii-k/PDF-planner/raw/master/planners/planner-2023-light.pdf">Download light</a>
+                                <a class="button button-primary mt-8" href="https://github.com/vad-ii-k/PDF-planner/raw/master/planners/planner-2023-dark.pdf">Download dark</a>
+							</div>
+					    </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="site-footer has-top-divider">
+            <div class="container">
+                <div class="site-footer-inner">
+                    <div class="brand footer-brand">
+                        <a href="#">
+							<img class="asset-light" src="dist/images/logo-light.svg" alt="Logo">
+							<img class="asset-dark" src="dist/images/logo-dark.svg" alt="Logo">
+                        </a>
+                    </div>
+                    <ul class="footer-links list-reset">
+                        <li>
+                            <a href="https://t.me/vad_ii_k" target="_blank">Contact</a>
+                        </li>
+                    </ul>
+                    <ul class="footer-social-links list-reset">
+                        <li>
+                            <a href="https://t.me/vad_ii_k" target="_blank">
+                                <span class="screen-reader-text">Telegram</span>
+                                <svg width="32" height="32" viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg">
+                                    <defs>
+                                        <linearGradient x1="50%" y1="0%" x2="50%" y2="99.2583404%" id="linearGradient-1">
+                                            <stop stop-color="#2AABEE" offset="0%"></stop>
+                                            <stop stop-color="#229ED9" offset="100%"></stop>
+                                        </linearGradient>
+                                    </defs>
+                                    <g id="Artboard" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                        <circle id="Oval" fill="url(#linearGradient-1)" cx="500" cy="500" r="500"></circle>
+                                        <path d="M226.328419,494.722069 C372.088573,431.216685 469.284839,389.350049 517.917216,369.122161 C656.772535,311.36743 685.625481,301.334815 704.431427,301.003532 C708.567621,300.93067 717.815839,301.955743 723.806446,306.816707 C728.864797,310.92121 730.256552,316.46581 730.922551,320.357329 C731.588551,324.248848 732.417879,333.113828 731.758626,340.040666 C724.234007,419.102486 691.675104,610.964674 675.110982,699.515267 C668.10208,736.984342 654.301336,749.547532 640.940618,750.777006 C611.904684,753.448938 589.856115,731.588035 561.733393,713.153237 C517.726886,684.306416 492.866009,666.349181 450.150074,638.200013 C400.78442,605.66878 432.786119,587.789048 460.919462,558.568563 C468.282091,550.921423 596.21508,434.556479 598.691227,424.000355 C599.00091,422.680135 599.288312,417.758981 596.36474,415.160431 C593.441168,412.561881 589.126229,413.450484 586.012448,414.157198 C581.598758,415.158943 511.297793,461.625274 375.109553,553.556189 C355.154858,567.258623 337.080515,573.934908 320.886524,573.585046 C303.033948,573.199351 268.692754,563.490928 243.163606,555.192408 C211.851067,545.013936 186.964484,539.632504 189.131547,522.346309 C190.260287,513.342589 202.659244,504.134509 226.328419,494.722069 Z" id="Path-3" fill="#FFFFFF"></path>
+                                    </g>
+                                </svg>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://github.com/vad-ii-k/" target="_blank">
+                                <span class="screen-reader-text">GitHub</span>
+                                <svg width="32" height="32" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                    <g>
+                                        <path d="M12 .5C5.37.5 0 5.78 0 12.292c0 5.211 3.438 9.63 8.205 11.188.6.111.82-.254.82-.567 0-.28-.01-1.022-.015-2.005-3.338.711-4.042-1.582-4.042-1.582-.546-1.361-1.335-1.725-1.335-1.725-1.087-.731.084-.716.084-.716 1.205.082 1.838 1.215 1.838 1.215 1.07 1.803 2.809 1.282 3.495.981.108-.763.417-1.282.76-1.577-2.665-.295-5.466-1.309-5.466-5.827 0-1.287.465-2.339 1.235-3.164-.135-.298-.54-1.497.105-3.121 0 0 1.005-.316 3.3 1.209.96-.262 1.98-.392 3-.398 1.02.006 2.04.136 3 .398 2.28-1.525 3.285-1.209 3.285-1.209.645 1.624.24 2.823.12 3.121.765.825 1.23 1.877 1.23 3.164 0 4.53-2.805 5.527-5.475 5.817.42.354.81 1.077.81 2.182 0 1.578-.015 2.846-.015 3.229 0 .309.21.678.825.56C20.565 21.917 24 17.495 24 12.292 24 5.78 18.627.5 12 .5z" fill="#FFF" data-original="#000000"></path>
+                                    </g>
+                                </svg>
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="footer-copyright">&copy; 2023 Vadim Sazanov, all rights reserved</div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="dist/js/main.min.js"></script>
+</body>
+</html>
