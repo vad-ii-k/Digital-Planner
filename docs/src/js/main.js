@@ -1,31 +1,28 @@
 (function () {
-  const doc = document
-  const rootEl = doc.documentElement
-  const body = doc.body
-  const lightSwitch = doc.getElementById('lights-toggle')
-  /* global ScrollReveal */
-  const sr = window.sr = ScrollReveal()
+  const lightSwitch = document.getElementById('lights-toggle');
 
-  rootEl.classList.remove('no-js')
-  rootEl.classList.add('js')
+  document.documentElement.classList.remove('no-js');
+  document.documentElement.classList.add('js');
+  document.body.classList.add('is-loaded');
 
-  window.addEventListener('load', function () {
-    body.classList.add('is-loaded')
-  })
-
-  // Reveal animations
-  function revealAnimations () {
+  const sr = window.sr = ScrollReveal();
+  function revealAnimations() {
     sr.reveal('.feature', {
       duration: 700,
       distance: '10%',
       easing: 'cubic-bezier(0.215, 0.61, 0.355, 1)',
       origin: 'right',
-      viewFactor: 0.1
-    })
+      viewFactor: 0.1,
+    });
   }
 
-  if (body.classList.contains('has-animations')) {
-    window.addEventListener('load', revealAnimations)
+  if (document.body.classList.contains('has-animations')) {
+    revealAnimations();
+  }
+
+  function handleColorSchemeChange(e) {
+    lightSwitch.checked = !e.matches;
+    checkLights();
   }
 
   if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
@@ -33,38 +30,21 @@
     checkLights();
   }
 
-  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
-    lightSwitch.checked = !e.matches;
-    checkLights();
-  });
+  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', handleColorSchemeChange);
 
-  // Light switcher
+  function checkLights() {
+    const labelText = lightSwitch.parentNode.querySelector('.label-text');
+    const downloadButton = document.getElementById('download-button');
+    const isLightsOn = lightSwitch.checked;
+
+    document.body.classList.toggle('lights-off', !isLightsOn);
+    labelText.innerHTML = isLightsOn ? 'dark' : 'light';
+    downloadButton.href = `https://github.com/vad-ii-k/PDF-planner/raw/master/planners/planner-2023-${isLightsOn ? 'light' : 'dark'}.pdf`;
+    downloadButton.innerHTML = `Download ${isLightsOn ? 'light' : 'dark'}`;
+  }
+
   if (lightSwitch) {
-    window.addEventListener('load', checkLights)
-    lightSwitch.addEventListener('change', checkLights)
+    checkLights();
+    lightSwitch.addEventListener('change', checkLights);
   }
-
-  function checkLights () {
-    let labelText = lightSwitch.parentNode.querySelector('.label-text')
-    let downloadButton = doc.getElementById('download-button')
-    if (lightSwitch.checked) {
-      body.classList.remove('lights-off')
-      if (labelText) {
-        labelText.innerHTML = 'dark'
-      }
-      if (downloadButton) {
-        downloadButton.href = 'https://github.com/vad-ii-k/PDF-planner/raw/master/planners/planner-2023-light.pdf'
-        downloadButton.innerHTML = 'Download light'
-      }
-    } else {
-      body.classList.add('lights-off')
-      if (labelText) {
-        labelText.innerHTML = 'light'
-      }
-      if (downloadButton) {
-        downloadButton.href = 'https://github.com/vad-ii-k/PDF-planner/raw/master/planners/planner-2023-dark.pdf'
-        downloadButton.innerHTML = 'Download dark'
-      }
-    }
-  }
-}())
+}());
