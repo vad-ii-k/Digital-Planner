@@ -51,8 +51,8 @@ async def main():
     planner = await builder.build_planner()
 
     os.chdir(os.path.join(os.path.dirname(__file__)))
-    await generate_html(planner, './dest/index.html')
-    await generate_pdf('./dest/index.html', './dest/main.css', './dest/planner.pdf')
+    await generate_html(planner, './dist/index.html')
+    await generate_pdf('./dist/index.html', './dist/main.css', './dist/planner.pdf')
 
 
 if __name__ == "__main__":
