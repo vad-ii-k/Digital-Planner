@@ -34,13 +34,21 @@
 
   function checkLights() {
     const labelText = lightSwitch.parentNode.querySelector('.label-text');
-    const downloadButton = document.getElementById('download-button');
+    const firstDownloadButton = document.getElementById('download-button-1');
+    const secondDownloadButton = document.getElementById('download-button-2');
     const isLightsOn = lightSwitch.checked;
 
     document.body.classList.toggle('lights-off', !isLightsOn);
     labelText.innerHTML = isLightsOn ? 'dark' : 'light';
-    downloadButton.href = `https://github.com/vad-ii-k/PDF-planner/raw/master/planners/planner-2023-${isLightsOn ? 'light' : 'dark'}.pdf`;
-    downloadButton.innerHTML = `Download ${isLightsOn ? 'light' : 'dark'}`;
+    const theme = isLightsOn ? 'light' : 'dark';
+
+    let year = 2023;
+    firstDownloadButton.href = `https://github.com/vad-ii-k/PDF-planner/raw/master/planners/planner-${year}-${theme}.pdf`;
+    firstDownloadButton.innerHTML = `${theme} ${year}`;
+
+    year = 2024
+    secondDownloadButton.href = `https://github.com/vad-ii-k/PDF-planner/raw/master/planners/planner-${year}-${theme}.pdf`;
+    secondDownloadButton.innerHTML = `${theme} ${year}`;
   }
 
   if (lightSwitch) {
