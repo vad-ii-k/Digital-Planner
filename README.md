@@ -6,6 +6,7 @@
 
 ### Installing dependencies:
 - `pip install jinja2 playwright`
+- `playwright install`
 - `npm install`
 
 ### Run the command to generate the planner:
