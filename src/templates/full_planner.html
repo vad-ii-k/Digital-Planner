@@ -1,5 +1,5 @@
 {% include 'header.html' %}
-    <div class="">
+    <div class="{{ "dark" if is_theme_dark }}">
         {% for page in pages %}
             {{ page | safe }}
         {% endfor %}
