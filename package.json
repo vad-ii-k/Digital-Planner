@@ -3,6 +3,6 @@
     "build": "npx tailwindcss -i src/input.css -o dist/main.css && python3 planner_generator.py"
   },
   "devDependencies": {
-    "tailwindcss": "^3.4.10"
+    "tailwindcss": "^3.4.17"
   }
 }
