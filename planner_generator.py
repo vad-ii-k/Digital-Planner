@@ -50,14 +50,14 @@ async def generate_pdf(html_file_path: str, css_file_path: str, out_file_path: s
 
 
 async def main():
-    builder = PlannerBuilder(year=2025, is_theme_dark=True, templates_path="src/templates")
+    builder = PlannerBuilder(year=2026, is_theme_dark=True, templates_path="src/templates")
     await builder.add_pages()
 
     planner = await builder.build_planner()
 
     os.chdir(os.path.join(os.path.dirname(__file__)))
     await generate_html(planner, "./dist/index.html")
-    await generate_pdf("./dist/index.html", "./dist/main.css", "planners/planner-2025-dark.pdf")
+    await generate_pdf("./dist/index.html", "./dist/main.css", "planners/planner-2026-light.pdf")
 
 
 if __name__ == "__main__":

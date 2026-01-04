@@ -42,11 +42,11 @@
     labelText.innerHTML = isLightsOn ? 'dark' : 'light';
     const theme = isLightsOn ? 'light' : 'dark';
 
-    let year = 2025;
+    let year = 2026;
     firstDownloadButton.href = `https://github.com/vad-ii-k/PDF-planner/raw/master/planners/planner-${year}-${theme}.pdf`;
     firstDownloadButton.innerHTML = `Download ${theme}`;
 
-    // year = 2025
+    // year = 2026
     // secondDownloadButton.href = `https://github.com/vad-ii-k/PDF-planner/raw/master/planners/planner-${year}-${theme}.pdf`;
     // secondDownloadButton.innerHTML = `${theme} ${year}`;
   }
