@@ -1,5 +1,6 @@
 # IDEs and editors
 .idea
+.DS_Store
 
 # compiled output
 node_modules
